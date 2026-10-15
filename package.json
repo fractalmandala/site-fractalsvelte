@@ -12,15 +12,20 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check .",
 		"format": "prettier --write .",
-		"docs:sync": "node scripts/sync-docs.mjs",
 		"lint:styles": "fractalstyler lint .",
-		"check:classes": "node scripts/check-classes.mjs"
+		"check:classes": "node scripts/check-classes.mjs",
+		"docs:npm": "node scripts/sync-docs.mjs",
+		"docs:copy": "node scripts/copy-docs.mjs",
+		"docs:sync": "pnpm docs:copy && pnpm docs:npm"
 	},
 	"devDependencies": {
 		"@fractaldesign/fractalstyler": "^1.2.0",
+		"@fractaldesign/pop-mdsvex": "^0.1.1",
 		"@sveltejs/adapter-vercel": "^7.0.0",
 		"@sveltejs/kit": "^3.0.0",
 		"@sveltejs/vite-plugin-svelte": "^7.2.0",
+		"@types/node": "^26.6.5",
+		"mdsvex": "^0.12.8",
 		"prettier": "^3.8.3",
 		"prettier-plugin-svelte": "^4.1.0",
 		"sass": "^1.105.1",
@@ -35,7 +40,6 @@
 	},
 	"dependencies": {
 		"@fractaldesign/pop": "^0.1.0",
-		"fractalicons": "^0.4.0",
-		"marked": "^18.1.1"
+		"fractalicons": "^0.4.0"
 	}
 }

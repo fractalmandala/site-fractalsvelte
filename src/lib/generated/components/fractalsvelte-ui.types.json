@@ -1,0 +1,13 @@
+{
+	"Variant": "'primary' | 'secondary' | 'soft' | 'outline' | 'ghost' | 'destructive' | 'surface'",
+	"Size": "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
+	"Shape": "'square' | 'rounded' | 'pill'",
+	"Intent": "'info' | 'success' | 'warning' | 'danger'",
+	"BtnType": "'button' | 'submit' | 'reset'",
+	"Orientation": "'horizontal' | 'vertical'",
+	"Placement": "'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'",
+	"Align": "'start' | 'center' | 'end' | 'stretch' | 'baseline'",
+	"Justify": "'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'",
+	"Space": "'none' | '3xs' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+	"Speed": "'fast' | 'normal' | 'slow'"
+}

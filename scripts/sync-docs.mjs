@@ -1,21 +1,21 @@
 // Pulls each package's published README, version and description from the npm
-// registry into src/content/ and src/lib/generated/registry.json, so the site
-// documents exactly what `pnpm add` installs. Run with `pnpm docs:sync`.
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+// registry into src/content/readme/ (as mdsvex pages) and
+// src/lib/generated/registry.json, so the site documents exactly what
+// `pnpm add` installs. Run with `pnpm docs:npm` (or `pnpm docs:sync` for all).
 import { gunzipSync } from 'node:zlib';
+import { toMdsvex, writeFile } from './lib/content.mjs';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const PACKAGES = [
-	'@fractaldesign/fractalstyler',
-	'@fractaldesign/fractalsvelte-ui',
-	'@fractaldesign/machines-ui',
-	'@fractaldesign/pop',
-	'@fractaldesign/pop-svelte',
-	'@fractaldesign/pop-mdsvex',
-	'@fractaldesign/pop-remark'
-];
+const GH = 'https://github.com/fractalmandala';
+/** npm name → where its README's relative links point */
+const PACKAGES = {
+	'@fractaldesign/fractalstyler': `${GH}/fractalstyler/blob/main/`,
+	'@fractaldesign/fractalsvelte-ui': `${GH}/fractalsvelte-ui/blob/main/`,
+	'@fractaldesign/machines-ui': `${GH}/machines-ui/blob/main/`,
+	'@fractaldesign/pop': `${GH}/fractalpop/blob/main/packages/core/`,
+	'@fractaldesign/pop-svelte': `${GH}/fractalpop/blob/main/packages/svelte/`,
+	'@fractaldesign/pop-mdsvex': `${GH}/fractalpop/blob/main/packages/mdsvex/`,
+	'@fractaldesign/pop-remark': `${GH}/fractalpop/blob/main/packages/remark/`
+};
 
 // Maintainer-only sections that ship in some READMEs but aren't user docs.
 const DROP_SECTION = /^(before release|developing this package|.*changelog)$/i;
@@ -52,7 +52,7 @@ async function readmeFromTarball(url) {
 }
 
 const registry = {};
-for (const name of PACKAGES) {
+for (const [name, blobBase] of Object.entries(PACKAGES)) {
 	const res = await fetch(`https://registry.npmjs.org/${name.replace('/', '%2f')}`);
 	if (!res.ok) throw new Error(`${name}: registry responded ${res.status}`);
 	const doc = await res.json();
@@ -60,7 +60,14 @@ for (const name of PACKAGES) {
 	const manifest = doc.versions[version];
 	const slug = name.split('/')[1];
 	const readme = doc.readme || (await readmeFromTarball(manifest.dist.tarball));
-	await fs.writeFile(path.join(ROOT, 'src/content', `${slug}.md`), trimSections(readme));
+	await writeFile(
+		`src/content/readme/${slug}.md`,
+		toMdsvex(trimSections(readme), {
+			title: name,
+			source: `${name}@${version} README, from npm`,
+			blobBase
+		})
+	);
 	registry[name] = {
 		version,
 		description: manifest.description ?? '',
@@ -70,7 +77,4 @@ for (const name of PACKAGES) {
 	console.log(`${name}@${version}`);
 }
 
-await fs.writeFile(
-	path.join(ROOT, 'src/lib/generated/registry.json'),
-	JSON.stringify(registry, null, '\t') + '\n'
-);
+await writeFile('src/lib/generated/registry.json', JSON.stringify(registry, null, '\t') + '\n');

@@ -1,3 +1,7 @@
+---
+title: "@fractaldesign/fractalstyler"
+source: "@fractaldesign/fractalstyler@1.2.0 README, from npm"
+---
 # Fractalstyler
 
 A composition styling system — the class registry is the public API: compose
@@ -10,7 +14,7 @@ CSS. MIT © [Fractal Mandala](https://github.com/fractalmandala)
 - Configuration: [`docs/references/configurations-api.md`](https://github.com/fractalmandala/fractalstyler/blob/main/docs/references/configurations-api.md)
 - Agent skill: [`skills/fractalstyler/SKILL.md`](https://github.com/fractalmandala/fractalstyler/blob/main/skills/fractalstyler/SKILL.md)
 - [VS Code Intellisense Extension](https://github.com/fractalmandala/fractalstyler/blob/main/fractalstyler-vscode/fractalstyler-0.4.0.vsix)
-- [NPM](https://www.npmjs.com/package/@fractaldesign/fractalstyler)
+- [NPM](/fractalstyler)
 
 ## Using it in a project
 
@@ -95,12 +99,12 @@ interactively; `--yes` takes the defaults (track + docs + intellisense).
 Optional runtime layer. Presets are plain `data-*` attributes written onto the
 page — no build step, no stylesheet of its own, safe to leave out entirely.
 
-| Axis    | Attribute      | Values                                    | Reaches                                                               |
-| ------- | -------------- | ----------------------------------------- | --------------------------------------------------------------------- |
-| Size    | `data-size`    | `sm` `md` `bs` `lg`                       | `button`, `input`, `select`, `input.input`, `select.select`, `a.btn`  |
-| Shape   | `data-shape`   | `square` `modern` `curved` `round`        | same targets, plus `.card`                                            |
+| Axis | Attribute | Values | Reaches |
+|---|---|---|---|
+| Size | `data-size` | `sm` `md` `bs` `lg` | `button`, `input`, `select`, `input.input`, `select.select`, `a.btn` |
+| Shape | `data-shape` | `square` `modern` `curved` `round` | same targets, plus `.card` |
 | Variant | `data-variant` | `primary` … `iconbox` (see `libTypes.ts`) | **`input.input`, `select.select`, `button.button`, `a.btn`, `.card`** |
-| Padding | `data-pad`     | `sm` `md` `bs` `lg` `xl`                  | **`.card` only**                                                      |
+| Padding | `data-pad` | `sm` `md` `bs` `lg` `xl` | **`.card` only** |
 
 The variant axis is class-qualified rather than element-qualified: only controls
 that opted into the system's own class receive one. Bare `<input>`, `<select>`
@@ -155,19 +159,13 @@ wire up first. Call them from a click handler, a store subscription, a URL
 parameter, anywhere:
 
 ```js
-import {
-	setPresetSize,
-	setPresetShape,
-	setPresetPad,
-	setPresetVariant,
-	resetPresets
-} from '@fractaldesign/fractalstyler';
+import { setPresetSize, setPresetShape, setPresetPad, setPresetVariant, resetPresets } from '@fractaldesign/fractalstyler';
 
-setPresetSize('lg'); // size sweep
-setPresetShape('round'); // shape sweep
-setPresetPad('xl'); // .card padding sweep
-setPresetVariant('soft'); // paint sweep — controls + .card
-resetPresets(); // back to bs / modern / md / primary
+setPresetSize('lg');       // size sweep
+setPresetShape('round');   // shape sweep
+setPresetPad('xl');        // .card padding sweep
+setPresetVariant('soft');  // paint sweep — controls + .card
+resetPresets();            // back to bs / modern / md / primary
 ```
 
 `@fractaldesign/fractalstyler/presets` is available as a subpath if you would
@@ -192,10 +190,10 @@ values are plain, already-narrowed unions:
 ```js
 import { presetState } from '@fractaldesign/fractalstyler';
 
-presetState.size; // 'sm' | 'md' | 'bs' | 'lg'
-presetState.shape; // 'square' | 'modern' | 'curved' | 'round'
-presetState.pad; // 'sm' | 'md' | 'bs' | 'lg' | 'xl'
-presetState.variant; // 'primary' | 'secondary' | 'soft' | … | 'iconbox'
+presetState.size;     // 'sm' | 'md' | 'bs' | 'lg'
+presetState.shape;    // 'square' | 'modern' | 'curved' | 'round'
+presetState.pad;      // 'sm' | 'md' | 'bs' | 'lg' | 'xl'
+presetState.variant;  // 'primary' | 'secondary' | 'soft' | … | 'iconbox'
 presetState.initialized; // boolean — has init() run yet?
 ```
 
@@ -206,8 +204,8 @@ whatever the returning user last chose — so a stored `lg` reads back as `bs`:
 ```js
 import { initPresets, presetState } from '@fractaldesign/fractalstyler';
 
-initPresets(); // hydrate from localStorage, apply, start watching
-presetState.size; // now the user's real choice
+initPresets();            // hydrate from localStorage, apply, start watching
+presetState.size;         // now the user's real choice
 ```
 
 Mounting `PresetControls` does the same thing on mount, so if the component is
@@ -277,17 +275,17 @@ build a custom control without re-listing values the registry already owns:
 </select>
 ```
 
-| Export                             | What it does                                                                                                                                                       |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `setPresetSize(size)`              | Sets the size sweep. Accepts `DataSize`.                                                                                                                           |
-| `setPresetShape(shape)`            | Sets the shape sweep. Accepts `DataShape`.                                                                                                                         |
-| `setPresetPad(pad)`                | Sets card padding. Accepts `DataPad`; `.card` only.                                                                                                                |
-| `setPresetVariant(variant)`        | Sets the control paint. Accepts `DataVariant`; reaches `input.input`, `select.select`, `button.button`, `a.btn` and `.card`.                                       |
-| `resetPresets()`                   | Back to the defaults: `bs` / `modern` / `md` / `primary`.                                                                                                          |
-| `initPresets()`                    | Opt into the automatic behaviour alone — restores stored choices, applies them, and watches for new markup. No picker. **Call this before reading `presetState`.** |
-| `presetState`                      | The live state object. Read `presetState.size`, `.shape`, `.pad`, `.variant`, `.initialized`.                                                                      |
-| `SIZES` `SHAPES` `VARIANTS` `PADS` | The runtime arrays behind each union.                                                                                                                              |
-| `PresetControls`                   | The ready-made component.                                                                                                                                          |
+| Export | What it does |
+|---|---|
+| `setPresetSize(size)` | Sets the size sweep. Accepts `DataSize`. |
+| `setPresetShape(shape)` | Sets the shape sweep. Accepts `DataShape`. |
+| `setPresetPad(pad)` | Sets card padding. Accepts `DataPad`; `.card` only. |
+| `setPresetVariant(variant)` | Sets the control paint. Accepts `DataVariant`; reaches `input.input`, `select.select`, `button.button`, `a.btn` and `.card`. |
+| `resetPresets()` | Back to the defaults: `bs` / `modern` / `md` / `primary`. |
+| `initPresets()` | Opt into the automatic behaviour alone — restores stored choices, applies them, and watches for new markup. No picker. **Call this before reading `presetState`.** |
+| `presetState` | The live state object. Read `presetState.size`, `.shape`, `.pad`, `.variant`, `.initialized`. |
+| `SIZES` `SHAPES` `VARIANTS` `PADS` | The runtime arrays behind each union. |
+| `PresetControls` | The ready-made component. |
 
 #### Notes
 
@@ -313,16 +311,16 @@ npx @fractaldesign/fractalstyler lint     # contract linter (self or <dir>)
 npx @fractaldesign/fractalstyler help     # all options
 ```
 
-| Option                                 | Default           | Meaning                               |
-| -------------------------------------- | ----------------- | ------------------------------------- |
-| `--track` / `--eject`                  | track             | How the styles are held               |
-| `--docs` / `--no-docs`                 | docs              | Copy registry + configuration docs    |
-| `--docs-dir <dir>`                     | `fractalstyler/`  | Where docs land                       |
-| `--styles-dir <dir>`                   | `src/lib/styles`  | Eject target for the layers           |
-| `--palette-dir <dir>`                  | `src/lib/palette` | Eject target for the palettes         |
-| `--scripts-dir <dir>`                  | `scripts`         | Eject target for the registry builder |
-| `--intellisense` / `--no-intellisense` | ask               | VS Code extension settings + check    |
-| `--yes` / `-y`                         | —                 | Non-interactive, take the defaults    |
+| Option | Default | Meaning |
+|---|---|---|
+| `--track` / `--eject` | track | How the styles are held |
+| `--docs` / `--no-docs` | docs | Copy registry + configuration docs |
+| `--docs-dir <dir>` | `fractalstyler/` | Where docs land |
+| `--styles-dir <dir>` | `src/lib/styles` | Eject target for the layers |
+| `--palette-dir <dir>` | `src/lib/palette` | Eject target for the palettes |
+| `--scripts-dir <dir>` | `scripts` | Eject target for the registry builder |
+| `--intellisense` / `--no-intellisense` | ask | VS Code extension settings + check |
+| `--yes` / `-y` | — | Non-interactive, take the defaults |
 
 `lint` needs the Sass compiler (an optional peer of this package):
 `pnpm add -D sass`. Its own flags (`--json`, `--own <file>`, `--registry <f>`)
@@ -340,17 +338,16 @@ Or configure in your MCP settings (Claude Desktop, Cursor, Antigravity):
 
 ```json
 {
-	"mcpServers": {
-		"fractalstyler": {
-			"command": "npx",
-			"args": ["-y", "@fractaldesign/fractalstyler", "mcp"]
-		}
-	}
+  "mcpServers": {
+    "fractalstyler": {
+      "command": "npx",
+      "args": ["-y", "@fractaldesign/fractalstyler", "mcp"]
+    }
+  }
 }
 ```
 
 Exposes 8 agent tools:
-
 - `guide_styling`: Intent-driven design advisor (gap, typography, layout, cards, buttons).
 - `search_classes`: Fast search and filter over the 498 canonical classes.
 - `get_tokens`: Inspect space, typography, radius, shadow, and surface tokens.

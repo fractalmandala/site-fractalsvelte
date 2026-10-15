@@ -17,7 +17,7 @@ for (const { class: selector } of registry)
 for (const m of own.matchAll(/\.([a-zA-Z][\w-]*)/g)) allowed.add(m[1]);
 // Markup owned by other packages: fractalpop's tokens (themed through --fp-*
 // variables) and fractalicons' root class.
-const external = /^(fp(__|$)|fractalicon$)/;
+const external = /^(fp(__|-lang--|$)|fractalicon$)/;
 
 const pagesDir = '.svelte-kit/output/prerendered/pages';
 const pages = fs.readdirSync(pagesDir, { recursive: true }).filter((f) => f.endsWith('.html'));

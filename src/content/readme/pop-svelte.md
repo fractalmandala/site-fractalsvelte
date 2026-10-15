@@ -1,3 +1,7 @@
+---
+title: "@fractaldesign/pop-svelte"
+source: "@fractaldesign/pop-svelte@0.1.1 README, from npm"
+---
 # @fractaldesign/pop-svelte
 
 `@fractaldesign/pop-svelte` brings fractalpop into Svelte and SvelteKit. It ships four
@@ -32,7 +36,7 @@ renders `<pre class="fp"><code>…</code></pre>`.
 
 ```svelte
 <script lang="ts">
-	import { Highlight } from '@fractaldesign/pop-svelte';
+  import { Highlight } from '@fractaldesign/pop-svelte'
 </script>
 
 <Highlight code={source} lang="sass" highlightLines={[2, 3]} />
@@ -53,24 +57,24 @@ numbers, and highlighted line ranges.
 
 ```svelte
 <script lang="ts">
-	import { Code } from '@fractaldesign/pop-svelte';
+  import { Code } from '@fractaldesign/pop-svelte'
 </script>
 
 <Code code={source} lang="ts" title="example.ts" controls lineNumbers highlightLines={[[3, 5]]} />
 ```
 
-| Prop                                        | Type                             | Default | Purpose                              |
-| ------------------------------------------- | -------------------------------- | ------- | ------------------------------------ |
-| `code`                                      | `string`                         | `''`    | Source to highlight.                 |
-| `lang`                                      | `string`                         | —       | Language id / alias.                 |
-| `theme`                                     | `Theme`                          | —       | A palette or `{ light, dark }` pair. |
-| `title`                                     | `string \| null`                 | `null`  | Filename shown in the header.        |
-| `controls`                                  | `boolean`                        | `false` | Show the three header dots.          |
-| `lineNumbers`                               | `boolean`                        | `false` | Show one-based line numbers.         |
-| `highlightLines`                            | `(number \| [number, number])[]` | `[]`    | Lines and inclusive ranges to mark.  |
-| `startingLineNumber`                        | `number`                         | `1`     | First line number.                   |
-| `padding` / `fontSize` / `lineNumbersWidth` | `string`                         | —       | Layout overrides.                    |
-| `cx` / `mark` / `markLine`                  | —                                | —       | Token and line customization.        |
+| Prop                                        | Type                            | Default | Purpose                              |
+| ------------------------------------------- | ------------------------------- | ------- | ------------------------------------ |
+| `code`                                      | `string`                        | `''`    | Source to highlight.                 |
+| `lang`                                      | `string`                        | —       | Language id / alias.                 |
+| `theme`                                     | `Theme`                         | —       | A palette or `{ light, dark }` pair. |
+| `title`                                     | `string \| null`                | `null`  | Filename shown in the header.        |
+| `controls`                                  | `boolean`                       | `false` | Show the three header dots.          |
+| `lineNumbers`                               | `boolean`                       | `false` | Show one-based line numbers.         |
+| `highlightLines`                            | `(number \| [number, number])[]` | `[]`   | Lines and inclusive ranges to mark.  |
+| `startingLineNumber`                        | `number`                        | `1`     | First line number.                   |
+| `padding` / `fontSize` / `lineNumbersWidth` | `string`                        | —       | Layout overrides.                    |
+| `cx` / `mark` / `markLine`                  | —                               | —       | Token and line customization.        |
 
 ## `Editor`
 
@@ -80,8 +84,8 @@ updates the highlight; `Tab` indents and `Shift`+`Tab` outdents. Use
 
 ```svelte
 <script lang="ts">
-	import { Editor } from '@fractaldesign/pop-svelte';
-	let source = $state('const greet = (name) => `Hi ${name}`');
+  import { Editor } from '@fractaldesign/pop-svelte'
+  let source = $state("const greet = (name) => `Hi ${name}`")
 </script>
 
 <Editor bind:value={source} lang="ts" title="playground.ts" />
@@ -111,15 +115,15 @@ browser.
 
 ```svelte
 <script lang="ts">
-	import { FileTree, Code } from '@fractaldesign/pop-svelte';
-	const files = { 'src/app.ts': '…', 'src/lib/util.ts': '…' };
-	let active = $state('src/app.ts');
+  import { FileTree, Code } from '@fractaldesign/pop-svelte'
+  const files = { 'src/app.ts': '…', 'src/lib/util.ts': '…' }
+  let active = $state('src/app.ts')
 </script>
 
 <FileTree
-	paths={Object.keys(files)}
-	activeFile={active}
-	onactivefilechange={(path) => (active = path)}
+  paths={Object.keys(files)}
+  activeFile={active}
+  onactivefilechange={(path) => (active = path)}
 />
 <Code code={files[active]} lang="ts" lineNumbers />
 ```
@@ -140,7 +144,7 @@ glyph. Use it for VS Code-style, file-type-aware icons.
 
 ```svelte
 {#snippet fileIcon(item)}
-	{#if item.directory}📁{:else if item.name.endsWith('.svelte')}🟠{:else}📄{/if}
+  {#if item.directory}📁{:else if item.name.endsWith('.svelte')}🟠{:else}📄{/if}
 {/snippet}
 
 <FileTree {paths} {activeFile} {onactivefilechange} icon={fileIcon} />
@@ -153,7 +157,7 @@ For code you only have on the client — pasted or generated at runtime — the
 
 ```svelte
 <script lang="ts">
-	import { fractalpop } from '@fractaldesign/pop-svelte';
+  import { fractalpop } from '@fractaldesign/pop-svelte'
 </script>
 
 <pre use:fractalpop={{ lang: 'ts' }}>{code}</pre>
@@ -166,16 +170,16 @@ and the component writes the matching `--fp-*` variables inline. A pair renders
 with `light-dark()`, so it follows the surrounding `color-scheme`.
 
 ```ts
-import type { Theme } from '@fractaldesign/pop-svelte';
+import type { Theme } from '@fractaldesign/pop-svelte'
 
 const oneDark: Theme = {
-	background: '#282c34',
-	foreground: '#abb2bf',
-	keyword: '#c678dd',
-	string: '#98c379',
-	comment: '#5c6370'
-	// class, property, entity, jsxliterals, sign …
-};
+  background: '#282c34',
+  foreground: '#abb2bf',
+  keyword: '#c678dd',
+  string: '#98c379',
+  comment: '#5c6370',
+  // class, property, entity, jsxliterals, sign …
+}
 ```
 
 If you prefer plain CSS, skip the `theme` prop and set the variables yourself.
@@ -198,6 +202,6 @@ use, if you need it directly.
 
 ## Related Packages
 
-- [fractalpop](https://www.npmjs.com/package/fractalpop) — Core highlighter engine
-- [@fractaldesign/pop-mdsvex](https://www.npmjs.com/package/@fractaldesign/pop-mdsvex) — Highlighter hook for MDSveX in SvelteKit
-- [@fractaldesign/pop-remark](https://www.npmjs.com/package/@fractaldesign/pop-remark) — Remark plugin for Markdown & MDX
+- [fractalpop](/fractalpop) — Core highlighter engine
+- [@fractaldesign/pop-mdsvex](/fractalpop/mdsvex) — Highlighter hook for MDSveX in SvelteKit
+- [@fractaldesign/pop-remark](/fractalpop/remark) — Remark plugin for Markdown & MDX

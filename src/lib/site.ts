@@ -1,3 +1,4 @@
+import guideIndex from './generated/docs.json';
 import registry from './generated/registry.json';
 
 export const GITHUB = 'https://github.com/fractalmandala';
@@ -34,6 +35,8 @@ export type Project = {
 	summary: string;
 	repo: string;
 	packages: Package[];
+	/** Has a generated component API reference under /<slug>/components */
+	components?: boolean;
 	stats: Stat[];
 	features: Feature[];
 	quickstart: Snippet[];
@@ -125,6 +128,7 @@ export const projects: Project[] = [
 		summary:
 			'A token-driven Svelte 5 runes component library. Pick a variant, shape and size with props, and restyle anything with your own CSS — the library ships in a cascade layer, so your styles always win.',
 		repo: `${GITHUB}/fractalsvelte-ui`,
+		components: true,
 		packages: [
 			pkg({
 				name: '@fractaldesign/fractalsvelte-ui',
@@ -207,6 +211,7 @@ export const projects: Project[] = [
 		summary:
 			'Svelte 5 components drawn with characters: graphs, animated terminals, diagrams, and a node-and-edge workflow builder. Dashed frames, block glyphs, monospace type.',
 		repo: `${GITHUB}/machines-ui`,
+		components: true,
 		packages: [
 			pkg({
 				name: '@fractaldesign/machines-ui',
@@ -379,6 +384,11 @@ export default {
 		]
 	}
 ];
+
+export type Guide = { slug: string; title: string; description: string };
+
+/** Guides copied from each package's folder by scripts/copy-docs.mjs */
+export const guides = guideIndex as Record<string, Guide[] | undefined>;
 
 export const packageCount = projects.reduce((n, p) => n + p.packages.length, 0);
 

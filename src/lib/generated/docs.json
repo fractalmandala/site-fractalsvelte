@@ -1,0 +1,34 @@
+{
+	"fractalstyler": [
+		{
+			"slug": "configuration",
+			"title": "Configuration API",
+			"description": "Every Sass variable, runtime token, data-* axis and class family in the system."
+		},
+		{
+			"slug": "tokens",
+			"title": "Token reference",
+			"description": "The type, space, radius, colour and motion tokens, and the classes each one emits."
+		},
+		{
+			"slug": "classes",
+			"title": "Class registry",
+			"description": "All 498 classes by layer, with the declarations they expand to."
+		},
+		{
+			"slug": "recipes",
+			"title": "Recipes",
+			"description": "Verified compositions for common patterns, rendered live on this page."
+		},
+		{
+			"slug": "agent-skill",
+			"title": "Agent skill",
+			"description": "The rules a coding agent follows to compose with fractalstyler."
+		},
+		{
+			"slug": "vscode",
+			"title": "VS Code extension",
+			"description": "Class completions, hovers and an editor for the styles folder."
+		}
+	]
+}

@@ -1,3 +1,7 @@
+---
+title: "@fractaldesign/pop-mdsvex"
+source: "@fractaldesign/pop-mdsvex@0.1.1 README, from npm"
+---
 # @fractaldesign/pop-mdsvex
 
 `@fractaldesign/pop-mdsvex` highlights fenced code in `.md` and `.svx` files. It plugs into mdsvex's `highlight.highlighter` hook and returns an HTML string with
@@ -19,20 +23,20 @@ Svelte config. mdsvex can process `.svx` **and** `.md` files — list both in it
 
 ```js
 // svelte.config.js
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { mdsvex } from 'mdsvex';
-import { fractalpopHighlighter } from '@fractaldesign/pop-mdsvex';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
+import { mdsvex } from 'mdsvex'
+import { fractalpopHighlighter } from '@fractaldesign/pop-mdsvex'
 
 const mdsvexConfig = {
-	extensions: ['.svx', '.md'],
-	highlight: { highlighter: fractalpopHighlighter }
-};
+  extensions: ['.svx', '.md'],
+  highlight: { highlighter: fractalpopHighlighter },
+}
 
 export default {
-	extensions: ['.svelte', '.svx', '.md'],
-	// Run mdsvex before vitePreprocess (see the note below).
-	preprocess: [mdsvex(mdsvexConfig), vitePreprocess()]
-};
+  extensions: ['.svelte', '.svx', '.md'],
+  // Run mdsvex before vitePreprocess (see the note below).
+  preprocess: [mdsvex(mdsvexConfig), vitePreprocess()],
+}
 ```
 
 Now every fenced code block in a `.svx` or `.md` file is highlighted at build
@@ -44,7 +48,7 @@ time.
 > for a real Sass block — which fails unless you have a Sass compiler installed.
 > Running mdsvex first escapes the fence, so the false match never happens.
 
-````md
+```md
 ```sass {2,4}
 $brand: hsl(212, 90%, 55%)
 .card
@@ -52,9 +56,7 @@ $brand: hsl(212, 90%, 55%)
   &:hover
     background: darken($brand, 8%)
 ```
-````
-
-````
+```
 
 The `{2,4}` after the language marks those 1-based lines with
 `fp__line--highlighted`. Ranges work too: `{2,4-6}`.
@@ -68,7 +70,7 @@ the usual `fp__token--<type>` classes. Style it with the `--fp-*` variables. Add
 .fp__line--highlighted {
   background: #fff8c5;
 }
-````
+```
 
 ## API
 
@@ -95,6 +97,6 @@ Parses `{1,3-5}` into a `Set` of 1-based line numbers.
 
 ## Related Packages
 
-- [fractalpop](https://www.npmjs.com/package/fractalpop) — Core highlighter engine
-- [@fractaldesign/pop-svelte](https://www.npmjs.com/package/@fractaldesign/pop-svelte) — Svelte 5 components and action
-- [@fractaldesign/pop-remark](https://www.npmjs.com/package/@fractaldesign/pop-remark) — Remark plugin for Markdown & MDX
+- [fractalpop](/fractalpop) — Core highlighter engine
+- [@fractaldesign/pop-svelte](/fractalpop/svelte) — Svelte 5 components and action
+- [@fractaldesign/pop-remark](/fractalpop/remark) — Remark plugin for Markdown & MDX

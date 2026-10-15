@@ -26,15 +26,28 @@ other CSS framework.
 
 ## Docs content
 
-Each package's README is pulled from the npm registry, so the docs match what
-`pnpm add` installs. Versions and descriptions come from the same sync.
+Everything under "Documentation" is copied from the packages themselves, then
+rendered by [mdsvex](https://mdsvex.pngwn.io) with code highlighted by
+`@fractaldesign/pop-mdsvex`. Every markdown element is mapped to fractalstyler
+classes in `src/lib/mdsvex/DocLayout.svelte`.
+
+| Source                                                 | Becomes                                |
+| ------------------------------------------------------ | -------------------------------------- |
+| Each package's README, from npm                        | The README section of its package page |
+| fractalstyler `docs/`, `skills/`, VS Code README       | Guides under `/fractalstyler/docs/*`   |
+| fractalstyler `data/recipes.json`                      | `/fractalstyler/docs/recipes`, live    |
+| fractalsvelte-ui `src/lib/documentation/manifest.json` | `/fractalsvelte-ui/components/*`       |
+| machines-ui `src/docs/data/components.json`            | `/machines-ui/components/*`            |
 
 ```sh
-pnpm docs:sync   # refresh src/content/*.md and src/lib/generated/registry.json
+pnpm docs:sync   # both of the below
+pnpm docs:copy   # package folders (../../packages, or $FRACTAL_PACKAGES) → src/content/docs, src/lib/generated/components
+pnpm docs:npm    # npm READMEs, versions and descriptions → src/content/readme, src/lib/generated/registry.json
 ```
 
-Run it after publishing a package, then rebuild. The project pages' summaries,
-features and quick starts are written by hand in `src/lib/site.ts`.
+Run it after changing a package's docs or publishing, then rebuild. Generated
+files are excluded from prettier so they stay verbatim. The project pages'
+summaries, features and quick starts are written by hand in `src/lib/site.ts`.
 
 ## Commands
 

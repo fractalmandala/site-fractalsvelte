@@ -19,10 +19,11 @@ hr
 	text-transform: uppercase
 	letter-spacing: 0.2em
 
-.fs-shelf // Hairline grid — 1px rules between cells; give each child .bg-surface
+.fs-shelf // Hairline grid — 1px rules between cells; mark each cell .fs-shelf-cell
 	gap: 1px
-	background: var(--border)
-	border: 1px solid var(--border)
+
+.fs-shelf-cell // One shelf cell: its ring fills the 1px gap, so empty grid slots stay blank
+	box-shadow: 0 0 0 1px var(--border)
 
 .fs-frame // Dashed drawing frame; hosts one .fs-frame-cap and four .fs-corner marks
 	position: relative
@@ -83,3 +84,24 @@ hr
 	bottom: 0
 	right: 0
 	transform: translate(50%, 50%)
+
+// Markdown lists: markers back on, in the system's ink
+.fs-list-ul // Unordered markdown list — square markers in the theme colour
+	list-style: square outside
+	li::marker
+		color: var(--theme-color)
+
+.fs-list-ol // Ordered markdown list — decimal markers in muted ink
+	list-style: decimal outside
+	li::marker
+		color: var(--text-muted)
+
+// Code inside a heading takes the heading's size
+h2 code, h3 code, h4 code
+	font-size: inherit
+
+// Lines marked by a fence's {2,4-6} meta
+.fp__line--highlighted // fractalpop marked line
+	display: inline-block
+	min-width: 100%
+	background: var(--theme-color-sub)

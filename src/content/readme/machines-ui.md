@@ -1,9 +1,13 @@
+---
+title: "@fractaldesign/machines-ui"
+source: "@fractaldesign/machines-ui@0.0.1 README, from npm"
+---
 # machines-ui
 
 Svelte 5 components drawn with characters: graphs, animated terminals, diagrams, and a node-and-edge workflow builder. Dashed frames, block glyphs, monospace type.
 
-- **Docs and live examples:** <https://machines.fractalsvelte.dev>
-- **Source:** <https://github.com/fractalmandala/machines-ui>
+- **Docs and live examples:** [https://machines.fractalsvelte.dev](https://machines.fractalsvelte.dev)
+- **Source:** [https://github.com/fractalmandala/machines-ui](https://github.com/fractalmandala/machines-ui)
 
 ## Install
 
@@ -29,15 +33,15 @@ Import the stylesheet once, then import components from the package entry.
 
 ## What is in it
 
-| Family   | What it is                                                     |
-| -------- | -------------------------------------------------------------- |
-| Frame    | The dashed character frame every graph sits in, and its parts. |
-| Graphs   | Stats, charts, tables, timelines and more, drawn with glyphs.  |
-| Animated | Terminals, rain, fire, life and live readouts.                 |
-| Diagram  | Flows, trees and system diagrams.                              |
-| Flow     | Nodes, edges and the canvas of the workflow builder.           |
+| Family   | What it is                                                              |
+| -------- | ----------------------------------------------------------------------- |
+| Frame    | The dashed character frame every graph sits in, and its parts.          |
+| Graphs   | Stats, charts, tables, timelines and more, drawn with glyphs.           |
+| Animated | Terminals, rain, fire, life and live readouts.                          |
+| Diagram  | Flows, trees and system diagrams.                                       |
+| Flow     | Nodes, edges and the canvas of the workflow builder.                    |
 
-Every component has a page with its props, defaults, types and a live example: <https://machines.fractalsvelte.dev/docs>.
+Every component has a page with its props, defaults, types and a live example: [https://machines.fractalsvelte.dev/docs](https://machines.fractalsvelte.dev/docs).
 
 ## Workflow builder
 
@@ -70,4 +74,4 @@ Animated components stop when the user prefers reduced motion.
 
 ## License
 
-MIT. See [LICENSE](./LICENSE).
+MIT. See [LICENSE](https://github.com/fractalmandala/machines-ui/blob/main/LICENSE).

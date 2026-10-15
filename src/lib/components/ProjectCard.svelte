@@ -9,7 +9,7 @@
 	const main = $derived(project.packages[0]);
 </script>
 
-<a href="/{project.slug}" class="link-parent box gap-md pad-xl bg-surface hfull">
+<a href="/{project.slug}" class="link-parent box gap-md pad-xl bg-surface fs-shelf-cell hfull">
 	<div class="box gap-xs">
 		<span class="row ycenter xbetween gap-sm">
 			<Wordmark mark={project.mark} class="link-title text-xl weight-800 ls-tight-lg" />

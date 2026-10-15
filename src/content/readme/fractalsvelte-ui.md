@@ -1,3 +1,7 @@
+---
+title: "@fractaldesign/fractalsvelte-ui"
+source: "@fractaldesign/fractalsvelte-ui@0.7.0 README, from npm"
+---
 # @fractaldesign/fractalsvelte-ui
 
 A massive, modern, token-driven **Svelte 5 Runes** component library for **SvelteKit**.
@@ -20,7 +24,6 @@ A massive, modern, token-driven **Svelte 5 Runes** component library for **Svelt
 ## Component Catalog (91+ Components)
 
 ### 1. Actions & Triggers (`src/lib/components/actions/`)
-
 - **`Button`**: Versatile interactive button with variants (`primary`, `secondary`, `soft`, `outline`, `ghost`, `destructive`, `surface`), sizes (`xs`–`xl`), shapes (`rounded`, `pill`, `square`), loading spinner, and dual button/anchor rendering.
 - **`IconButton`**: Compact square/circle action button with accessible `aria-label`, hover tooltips, and scale tiers.
 - **`ButtonGroup`**: Seamlessly attached or spaced cluster container supporting horizontal and vertical orientations.
@@ -30,7 +33,6 @@ A massive, modern, token-driven **Svelte 5 Runes** component library for **Svelt
 - **`CopyButton`**: Clipboard copy utility with instant checkmark feedback and automatic 2-second timeout reversion.
 
 ### 2. Forms & Inputs (`src/lib/components/forms/`)
-
 - **`Input`**: Text, email, and password field with visibility toggle eye, clear button, helper text, and error states.
 - **`TextArea`**: Multi-line input with auto-resize option, max-length character counter, and error states.
 - **`Checkbox`**: Accessible checkbox with custom checkmark/dash SVGs, indeterminate state, label, and description.
@@ -48,7 +50,6 @@ A massive, modern, token-driven **Svelte 5 Runes** component library for **Svelt
 - **`FormField`**: Structural container binding inputs with labels, optional/required badges, and error alerts.
 
 ### 3. Data Display & Feedback (`src/lib/components/display/`)
-
 - **`Badge`**: Status indicator pill across semantic intents (`primary`, `success`, `warning`, `danger`, `info`, `surface`, `outline`).
 - **`Tag`**: Interactive chip component with icon snippet slot and dismiss button.
 - **`Avatar`**: User portrait badge with image loader, fallback initials, and status presence dots.
@@ -65,7 +66,6 @@ A massive, modern, token-driven **Svelte 5 Runes** component library for **Svelt
 - **`AspectRatio`**: Responsive container locking children to standard ratios (`16:9`, `4:3`, `1:1`, `21:9`).
 
 ### 4. Layout & Containers (`src/lib/components/layout/`)
-
 - **`Card`**: Versatile container with header, title, description, body, footer, surfaces, and shadow depths.
 - **`SelectableCard`**: Interactive card with selectable checkmark/radio dot indicator and active border glow.
 - **`ClickableCard`**: Interactive card functioning as a link or button with hover lift and press feedback.
@@ -79,7 +79,6 @@ A massive, modern, token-driven **Svelte 5 Runes** component library for **Svelt
 - **`Divider`**: Separator line with solid/dashed/dotted styles and centered labels.
 
 ### 5. Navigation & Shells (`src/lib/components/navigation/`)
-
 - **`AppShell`**: Responsive application scaffold with sticky Header, collapsible Sidebar, and main Content.
 - **`Header`**: Top header bar with branding slots, center navigation, and action controls.
 - **`TopNav`**: Horizontal navigation link bar with active indicator highlights and badge counters.
@@ -94,7 +93,6 @@ A massive, modern, token-driven **Svelte 5 Runes** component library for **Svelt
 - **`MobileNav`**: Slide-out mobile drawer overlay with animated backdrop and Escape key listener.
 
 ### 6. Overlays & Dialogs (`src/lib/components/overlays/`)
-
 - **`Dialog`**: Accessible modal dialog with backdrop blur, focus trap, Escape key dismissal, and transitions.
 - **`AlertDialog`**: Destructive confirmation dialog directing initial focus safely to cancel.
 - **`Drawer`**: Slide-out panel docking to left, right, top, or bottom with backdrop blur.
@@ -104,7 +102,6 @@ A massive, modern, token-driven **Svelte 5 Runes** component library for **Svelt
 - **`CommandPalette`**: Searchable command hub opened via shortcut (`⌘K` / `Ctrl+K`) with live filtering.
 
 ### 7. Typography & Code (`src/lib/components/typography/`)
-
 - **`Heading`**: Semantic heading element (`h1`–`h6`) with typographic scale and gradient text options.
 - **`Text`**: Body text supporting variants (`body`, `lead`, `muted`, `subtle`, `code`, `caption`, `bold`).
 - **`Code`**: Inline monospace code chip with subtle borders and syntax highlighting colors.
@@ -114,7 +111,6 @@ A massive, modern, token-driven **Svelte 5 Runes** component library for **Svelt
 - **`Accordion`**: Stacked group of expandable content sections supporting single or multi-expand mode.
 
 ### 8. Motion & Animations (`src/lib/components/motion/`)
-
 - **`AnimatedButton`**: Tactile spring physics button with micro-scale feedback, shine sweep, and ripple on click.
 - **`AnimatedCard`**: Card with smooth hover elevation and border spotlight tracking cursor coordinates.
 - **`Card3D`**: Interactive 3D tilt card tracking pointer coordinates with perspective and glare reflection.
@@ -127,7 +123,6 @@ A massive, modern, token-driven **Svelte 5 Runes** component library for **Svelt
 - **`CanvasMotion`**: Interactive background canvas rendering a constellation particle network.
 
 ### 9. UI Blocks & Domain Patterns (`src/lib/components/blocks/`)
-
 - **`WorkflowNode`**: Node card for pipeline editors with header, input/output port pins, and status badge.
 - **`FlowCanvas`**: Interactive infinite canvas grid with dot matrix background, drag panning, and zoom controls.
 - **`HeroBlock`**: High-converting hero section with badge pill, headline, subtext, and CTAs.
@@ -181,8 +176,8 @@ Requires Svelte 5. Works in any Svelte 5 / SvelteKit app.
 ```svelte
 <!-- src/routes/+layout.svelte -->
 <script>
-	import '@fractaldesign/fractalsvelte-ui/tokens.css';
-	let { children } = $props();
+  import '@fractaldesign/fractalsvelte-ui/tokens.css';
+  let { children } = $props();
 </script>
 
 {@render children()}
@@ -192,7 +187,7 @@ Requires Svelte 5. Works in any Svelte 5 / SvelteKit app.
 
 ```svelte
 <script lang="ts">
-	import { Button, Badge, Card } from '@fractaldesign/fractalsvelte-ui';
+  import { Button, Badge, Card } from '@fractaldesign/fractalsvelte-ui';
 </script>
 
 <Button variant="outline" size="lg" shape="pill">Execute Pipeline</Button>
@@ -208,14 +203,7 @@ import Button from '@fractaldesign/fractalsvelte-ui/components/actions/Button.sv
 Shared unions for building your own wrappers live in `/types`:
 
 ```ts
-import {
-	VARIANTS,
-	SIZES,
-	SHAPES,
-	type Variant,
-	type Size,
-	type Shape
-} from '@fractaldesign/fractalsvelte-ui/types';
+import { VARIANTS, SIZES, SHAPES, type Variant, type Size, type Shape } from '@fractaldesign/fractalsvelte-ui/types';
 // Variant: 'primary' | 'secondary' | 'soft' | 'outline' | 'ghost' | 'destructive' | 'surface'
 // Size:    'xs' | 'sm' | 'md' | 'lg' | 'xl'
 // Shape:   'square' | 'rounded' | 'pill'
@@ -231,11 +219,11 @@ Every component accepts `class` (forwarded to its root element) plus any native 
 <Button class="cta" variant="primary">Buy</Button>
 
 <style>
-	/* Plain class selector — beats the library's [data-variant] rules */
-	:global(.cta) {
-		background: hotpink;
-		border-radius: 0;
-	}
+  /* Plain class selector — beats the library's [data-variant] rules */
+  :global(.cta) {
+    background: hotpink;
+    border-radius: 0;
+  }
 </style>
 ```
 
@@ -243,8 +231,8 @@ Re-theme globally by overriding tokens:
 
 ```css
 :root {
-	--f-primary: #7c3aed;
-	--f-radius-md: 4px;
+  --f-primary: #7c3aed;
+  --f-radius-md: 4px;
 }
 ```
 

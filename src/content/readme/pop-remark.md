@@ -1,3 +1,7 @@
+---
+title: "@fractaldesign/pop-remark"
+source: "@fractaldesign/pop-remark@0.1.1 README, from npm"
+---
 # @fractaldesign/pop-remark
 
 `@fractaldesign/pop-remark` is a remark plugin that highlights fenced code in Markdown
@@ -20,14 +24,14 @@ Add the plugin to your remark pipeline before the stage that turns the tree into
 HTML.
 
 ```js
-import { remark } from 'remark';
-import html from 'remark-html';
-import remarkFractalpop from '@fractaldesign/pop-remark';
+import { remark } from 'remark'
+import html from 'remark-html'
+import remarkFractalpop from '@fractaldesign/pop-remark'
 
 const output = await remark()
-	.use(remarkFractalpop, { cx: { keyword: 'font-bold' } })
-	.use(html, { sanitize: false })
-	.process(markdown);
+  .use(remarkFractalpop, { cx: { keyword: 'font-bold' } })
+  .use(html, { sanitize: false })
+  .process(markdown)
 ```
 
 > **Note.** Pass `{ sanitize: false }` to `remark-html` (or configure
@@ -39,13 +43,11 @@ const output = await remark()
 Use one-based ranges in a fence's meta to mark lines. Single lines and ranges
 both work.
 
-````md
+```md
 ```ts {2,4-6}
-const ready = true;
+const ready = true
 ```
-````
-
-````
+```
 
 Those lines get the class `fp__line--highlighted`.
 
@@ -70,7 +72,7 @@ prefer named imports:
 
 ```js
 import { highlight } from '@fractaldesign/pop-remark'
-````
+```
 
 ## Output and styling
 
@@ -80,12 +82,12 @@ with `fp__token--<type>` tokens. Style it with the `--fp-*` variables, and add a
 
 ```css
 .fp__line--highlighted {
-	background: #fff8c5;
+  background: #fff8c5;
 }
 ```
 
 ## Related Packages
 
-- [fractalpop](https://www.npmjs.com/package/fractalpop) — Core highlighter engine
-- [@fractaldesign/pop-svelte](https://www.npmjs.com/package/@fractaldesign/pop-svelte) — Svelte 5 components and action
-- [@fractaldesign/pop-mdsvex](https://www.npmjs.com/package/@fractaldesign/pop-mdsvex) — Highlighter hook for MDSveX in SvelteKit
+- [fractalpop](/fractalpop) — Core highlighter engine
+- [@fractaldesign/pop-svelte](/fractalpop/svelte) — Svelte 5 components and action
+- [@fractaldesign/pop-mdsvex](/fractalpop/mdsvex) — Highlighter hook for MDSveX in SvelteKit
