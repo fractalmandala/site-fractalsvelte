@@ -1,6 +1,15 @@
 // Sanctioned extension layer: the only classes this site adds on top of the
 // fractalstyler registry. Tokens only — no raw colours, nothing over 2px.
 
+.logotype
+	height: 20px
+.landinglogo
+	object-fit: contain
+	height: 88px
+
+.hfull-vh-fitted
+	min-height: calc(100vh - var(--fit-height))
+
 // Monospace belongs to code and nothing else.
 code, pre, kbd, samp
 	font-family: var(--font-mono)
@@ -112,3 +121,32 @@ h2 code, h3 code, h4 code
 
 [data-mode='light'] .fs-only-dark // shown only in dark mode
 	display: none
+
+// Live component previews on /fractalsvelte-ui: one measure per kind of demo,
+// so a single field or card doesn't stretch across the whole stage.
+.fs-measure-sm // Preview width for one control or small card
+	width: 100%
+	max-width: 36ch
+
+.fs-measure-md // Preview width for a form, list or card
+	width: 100%
+	max-width: 52ch
+
+.fs-measure-lg // Preview width for a table, grid or block
+	width: 100%
+	max-width: 76ch
+
+.fs-stage-sm // Fixed-height, clipped preview stage — canvases, scrollers, shells
+	position: relative
+	overflow: hidden
+	height: 12rem
+
+.fs-stage-md // Taller clipped stage
+	position: relative
+	overflow: hidden
+	height: 16rem
+
+.fs-stage-lg // Tallest clipped stage — whole app shells
+	position: relative
+	overflow: hidden
+	height: 22rem

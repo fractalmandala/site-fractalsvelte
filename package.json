@@ -12,11 +12,11 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check .",
 		"format": "prettier --write .",
-		"check:classes": "node scripts/check-classes.mjs",
-		"docs:npm": "node scripts/sync-docs.mjs",
-		"docs:copy": "node scripts/copy-docs.mjs",
+		"check:classes": "node scripts/check-classes.ts",
+		"docs:npm": "node scripts/sync-docs.ts",
+		"docs:copy": "node scripts/copy-docs.ts",
 		"docs:sync": "pnpm docs:copy && pnpm docs:npm",
-		"check:seo": "node scripts/check-seo.mjs",
+		"check:seo": "node scripts/check-seo.ts",
 		"fonts": ".venv/bin/python scripts/build-fonts.py",
 		"lint:cui": "node ../../packages/ui-automation-playbook/affedo/scripts/cui-lint.mjs $(find src -name \"*.svelte\")"
 	},
@@ -43,7 +43,8 @@
 		"#og/*": "./og/*"
 	},
 	"dependencies": {
-		"@fractaldesign/fractalsvelte-ui": "^0.6.1",
+		"@fractaldesign/fractalsvelte-ui": "file:../../packages/fractalsvelte-ui",
+		"@fractaldesign/machines-ui": "file:../../packages/machines-ui",
 		"@fractaldesign/pop": "^0.1.0",
 		"fractalicons": "^0.4.0"
 	}

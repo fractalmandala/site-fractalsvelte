@@ -6,9 +6,13 @@
 	import SectionHead from '#lib/components/SectionHead.svelte';
 	import Wordmark from '#lib/components/Wordmark.svelte';
 	import { GITHUB, installLines, packageCount, projects } from '#lib/site.js';
+	import Heart from '#lib/icons/heart.svelte'
 	import type { PageProps } from './$types';
+	import { mode } from '#lib/mode/mode.svelte.js';
 
 	let { data }: PageProps = $props();
+	const store = mode();
+	const dark = $derived(store.resolved === 'dark');
 
 	const suite = [
 		{ value: String(projects.length), label: 'Projects' },
@@ -18,25 +22,26 @@
 	];
 </script>
 
-<main class="app-main grow px-lg">
-	<div class="content-section narrow-wide box gap-3xl">
-		<section class="box xcenter gap-lg pt-3xl">
-			<p class="fs-eyebrow text-body-sm weight-600 text-theme">
-				{projects.length} projects · {packageCount} packages · one contract
+<section class="main-section">
+	<section class="content-section narrow-wide">
+		<section class="box xcenter gap-2xl hfull-vh-fitted ycenter pb-3xl">
+			<span class="mono text-muted"><span class="text-theme">[</span> components | themes | styling system | curated links <span class="text-theme">]</span></span>
+			{#if dark}
+				<img class="landinglogo" src="/images/logotype-dark.png" alt="logo"/>
+			{:else}
+				<img class="landinglogo" src="/images/logotype-light.png" alt="logo"/>
+			{/if}
+			<p class="text-xl text-secondary lh16 prose">
+				Massive components library; motion and layout blocks; graph and workflow frames and moving parts; lightweight code highlighting with dedicated components; themes and theme manager; UI styling solutions; custom styling system. No Tailwind needed. All Sveltekit.
 			</p>
-			<h1 class="weight-800 lh11">
-				<Wordmark mark={['fractal', 'svelte']} class="hero-name hide-mobile" />
-				<Wordmark mark={['fractal', 'svelte']} class="text-4xl ls-tight-xl hide-desktop" />
-			</h1>
-			<p class="prose text-body-lg text-secondary lh15">
-				A styling system, two component libraries and a syntax highlighter for Svelte 5 and
-				SvelteKit. Every package works on its own. None of them needs a framework underneath.
-			</p>
+			<div class="row weight-600">
+				Made with <Heart/> for Sveltelit.
+			</div>
 			<div class="row xcenter gap-sm wrap">
-				<a href="#packages" class="btn" data-variant="primary" data-shape="square"
-					>Browse packages</a
+				<a href="/fractalsvelte-ui" class="btn tt-u weight-500" data-variant="primary" data-shape="square"
+					>Components</a
 				>
-				<a href={GITHUB} class="btn" data-variant="outline" data-shape="square">GitHub</a>
+				<a href="/machines-ui" class="btn tt-u weight-500" data-variant="outline" data-shape="square">MACHINES UI</a>
 			</div>
 		</section>
 
@@ -100,5 +105,5 @@
 				</p>
 			</div>
 		</Frame>
-	</div>
-</main>
+	</section>
+</section>

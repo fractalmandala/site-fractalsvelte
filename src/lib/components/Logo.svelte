@@ -10,7 +10,7 @@
 <a {href} class="row ycenter gap-sm shrink-0" aria-label="fractalsvelte home">
 	<MascotGL
 		class="site-logomotif"
-		size={48}
+		size={32}
 		compact
 		tilt={16}
 		shadow={0.6}

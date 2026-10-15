@@ -31,6 +31,7 @@ export type Package = {
 
 export type Project = {
 	slug: string;
+	name: string;
 	/** Wordmark split into the muted and the theme-coloured half */
 	mark: [string, string];
 	kind: string;
@@ -58,82 +59,8 @@ function pkg(input: PackageInput): Package {
 
 export const projects: Project[] = [
 	{
-		slug: 'fractalstyler',
-		mark: ['fractal', 'styler'],
-		kind: 'Styling system',
-		summary:
-			'A composition styling system, shipped as plain CSS and as editable Sass. The class registry is the public API: compose in markup, write no stylesheet.',
-		seo: {
-			title: 'fractalstyler \u2014 CSS styling system for Svelte & SvelteKit',
-			description:
-				'A class-based CSS styling system for Svelte and SvelteKit: 498 utility classes, design tokens and runtime presets, as plain CSS or editable Sass.'
-		},
-		repo: `${GITHUB}/fractalstyler`,
-		packages: [
-			pkg({
-				name: '@fractaldesign/fractalstyler',
-				readme: 'fractalstyler',
-				repoPath: '',
-				dev: true,
-				with: { dev: ['sass'] },
-				role: 'Classes, tokens, CLI, linter and MCP server'
-			})
-		],
-		stats: [
-			{ value: '498', label: 'Classes' },
-			{ value: '6', label: 'Layers' },
-			{ value: '4', label: 'Preset axes' },
-			{ value: '0', label: 'Runtime deps' }
-		],
-		features: [
-			{
-				title: 'The registry is the API',
-				body: 'Every class is listed, described and greppable. If a token exists, so does its class: --space-md becomes .gap-md, .pad-md and .mar-md.'
-			},
-			{
-				title: 'x is always horizontal',
-				body: 'Alignment modifiers sit on .box, .row and .grid and keep their meaning when you flip a container from column to row.'
-			},
-			{
-				title: 'Grids that step through divisors',
-				body: '.grid-6 goes to three, then two, then one. Never five, never a row left holding a single card.'
-			},
-			{
-				title: 'Plain CSS or editable Sass',
-				body: 'Import the compiled stylesheet with no toolchain, @use the Sass layers, or eject them into your project and own every line.'
-			},
-			{
-				title: 'Presets as data attributes',
-				body: 'Size, shape, variant and padding are data-* axes. Sweep them across a page at runtime with one function call.'
-			},
-			{
-				title: 'A contract your agent is held to',
-				body: 'A linter that rejects invented class names, an MCP server over the registry, and an agent skill on disk.'
-			}
-		],
-		quickstart: [
-			{
-				title: 'src/app.sass',
-				lang: 'sass',
-				code: "@use '@fractaldesign/fractalstyler/styles' as *"
-			},
-			{
-				title: 'or, without Sass',
-				lang: 'js',
-				code: "import '@fractaldesign/fractalstyler/css';"
-			},
-			{
-				title: 'Compose in markup',
-				lang: 'svelte',
-				code: `<div class="row ycenter xbetween gap-sm pad-md bg-surface border radius-md">
-	<span class="text-md weight-600">Fractalstyler</span>
-	<button data-variant="primary" data-shape="modern">Continue</button>
-</div>`
-			}
-		]
-	},
-	{
 		slug: 'fractalsvelte-ui',
+		name: 'Core Components',
 		mark: ['fractalsvelte', '-ui'],
 		kind: 'Component library',
 		summary:
@@ -222,6 +149,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: 'machines-ui',
+		name: 'Machines UI',
 		mark: ['machines', '-ui'],
 		kind: 'Character-drawn components',
 		summary:
@@ -305,6 +233,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: 'fractalpop',
+		name: 'Fractalpop',
 		mark: ['fractal', 'pop'],
 		kind: 'Syntax highlighting',
 		summary:
@@ -422,6 +351,82 @@ export default {
 	extensions: ['.svelte', '.svx', '.md'],
 	preprocess: [mdsvex({ extensions: ['.svx', '.md'], highlight: { highlighter: fractalpopHighlighter } })]
 };`
+			}
+		]
+	},
+	{
+		slug: 'fractalstyler',
+		name: 'Fractalstyler',
+		mark: ['fractal', 'styler'],
+		kind: 'Styling system',
+		summary:
+			'A composition styling system, shipped as plain CSS and as editable Sass. The class registry is the public API: compose in markup, write no stylesheet.',
+		seo: {
+			title: 'fractalstyler \u2014 CSS styling system for Svelte & SvelteKit',
+			description:
+				'A class-based CSS styling system for Svelte and SvelteKit: 498 utility classes, design tokens and runtime presets, as plain CSS or editable Sass.'
+		},
+		repo: `${GITHUB}/fractalstyler`,
+		packages: [
+			pkg({
+				name: '@fractaldesign/fractalstyler',
+				readme: 'fractalstyler',
+				repoPath: '',
+				dev: true,
+				with: { dev: ['sass'] },
+				role: 'Classes, tokens, CLI, linter and MCP server'
+			})
+		],
+		stats: [
+			{ value: '498', label: 'Classes' },
+			{ value: '6', label: 'Layers' },
+			{ value: '4', label: 'Preset axes' },
+			{ value: '0', label: 'Runtime deps' }
+		],
+		features: [
+			{
+				title: 'The registry is the API',
+				body: 'Every class is listed, described and greppable. If a token exists, so does its class: --space-md becomes .gap-md, .pad-md and .mar-md.'
+			},
+			{
+				title: 'x is always horizontal',
+				body: 'Alignment modifiers sit on .box, .row and .grid and keep their meaning when you flip a container from column to row.'
+			},
+			{
+				title: 'Grids that step through divisors',
+				body: '.grid-6 goes to three, then two, then one. Never five, never a row left holding a single card.'
+			},
+			{
+				title: 'Plain CSS or editable Sass',
+				body: 'Import the compiled stylesheet with no toolchain, @use the Sass layers, or eject them into your project and own every line.'
+			},
+			{
+				title: 'Presets as data attributes',
+				body: 'Size, shape, variant and padding are data-* axes. Sweep them across a page at runtime with one function call.'
+			},
+			{
+				title: 'A contract your agent is held to',
+				body: 'A linter that rejects invented class names, an MCP server over the registry, and an agent skill on disk.'
+			}
+		],
+		quickstart: [
+			{
+				title: 'src/app.sass',
+				lang: 'sass',
+				code: "@use '@fractaldesign/fractalstyler/styles' as *"
+			},
+			{
+				title: 'or, without Sass',
+				lang: 'js',
+				code: "import '@fractaldesign/fractalstyler/css';"
+			},
+			{
+				title: 'Compose in markup',
+				lang: 'svelte',
+				code: `<div class="row ycenter xbetween gap-sm pad-md bg-surface border radius-md">
+	<span class="text-md weight-600">Fractalstyler</span>
+	<button data-variant="primary" data-shape="modern">Continue</button>
+</div>`
 			}
 		]
 	}

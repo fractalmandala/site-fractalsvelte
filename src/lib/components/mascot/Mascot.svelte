@@ -276,9 +276,9 @@
 				class="mascot-base"
 				src={imgSrc}
 				srcset={imgSrcset}
-				sizes="{size}px"
-				width={size}
-				height={size}
+				sizes="32px"
+				width=32
+				height=24
 				{alt}
 				draggable="false"
 				decoding="async"
@@ -286,8 +286,8 @@
 			<svg
 				class="mascot-overlay"
 				viewBox="0 0 1024 1024"
-				width={size}
-				height={size}
+				width=32
+				height=24
 				aria-hidden="true"
 				focusable="false"
 			>

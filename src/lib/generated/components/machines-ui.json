@@ -108,6 +108,7 @@
 			"tokens": [
 				"--border",
 				"--fill",
+				"--font-sans",
 				"--graph-accent",
 				"--knob-thumb",
 				"--knob-track",
@@ -1091,6 +1092,7 @@
 			],
 			"tokens": [
 				"--border",
+				"--font-sans",
 				"--graph-accent",
 				"--text-muted",
 				"--text-primary",
@@ -3553,6 +3555,7 @@
 			"tokens": [
 				"--border",
 				"--graph-accent",
+				"--text-muted",
 				"--text-primary",
 				"--text-secondary"
 			],
@@ -3813,8 +3816,8 @@
 				"viewport"
 			],
 			"tokens": [
-				"--border",
 				"--graph-accent",
+				"--text-muted",
 				"--text-primary",
 				"--text-secondary"
 			],
@@ -3887,6 +3890,7 @@
 			"tokens": [
 				"--border",
 				"--graph-accent",
+				"--text-muted",
 				"--text-primary",
 				"--text-secondary"
 			],
@@ -4975,13 +4979,13 @@
 				"dcell",
 				"fs-box",
 				"fs-gap-sm",
+				"fs-pr-xs",
 				"fs-row",
 				"fs-text-muted",
 				"fs-wfull",
 				"fs-xevenly",
 				"fs-yevenly",
-				"ghost",
-				"pad-right-2xs"
+				"ghost"
 			],
 			"tokens": [
 				"--border",

@@ -4,14 +4,6 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
-		<script>
-			// Restore the reader's colour mode before first paint. fractalstyler
-			// defines every colour token under [data-mode], so this must run early.
-			try {
-				var mode = localStorage.getItem('fractalsvelte:mode');
-				if (mode === 'light' || mode === 'dark') document.documentElement.dataset.mode = mode;
-			} catch (e) {}
-		</script>
 		<link
 			rel="preload"
 			href="/fonts/google-sans-flex.woff2"

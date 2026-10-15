@@ -4,13 +4,13 @@
 	let { entries }: { entries: Entry[] } = $props();
 </script>
 
-<nav class="box gap-sm text-body-sm" aria-label="On this page">
-	<p class="fs-eyebrow text-body-sm weight-600 text-muted">On this page</p>
-	<ul class="box gap-xs">
+<nav class="box gap-sm" aria-label="On this page">
+	<p class="nav-header text-muted tt-u">On this page</p>
+	<div class="box gap-sm">
 		{#each entries as entry (entry.id)}
-			<li class={entry.depth > 2 ? 'pl-md' : ''}>
-				<a href="#{entry.id}" class="link-plain text-secondary">{entry.text}</a>
-			</li>
+			<div class={entry.depth > 1 ? 'pl-md' : ''}>
+				<a href="#{entry.id}" class="text-sm link-plain text-secondary">{entry.text}</a>
+			</div>
 		{/each}
-	</ul>
+		</div>
 </nav>

@@ -4,11 +4,14 @@
 	import { luMenu, luX } from 'fractalicons/lucide';
 	import { reGithubLine } from 'fractalicons/remix';
 	import Logo from './Logo.svelte';
-	import ModeToggle from './ModeToggle.svelte';
+	import ModeToggle from '#lib/mode/ModeToggle.svelte';
+	import { mode } from '#lib/mode/mode.svelte.js';
 	import Wordmark from './Wordmark.svelte';
 	import { GITHUB, projects } from '#lib/site.js';
 
 	let menu = $state<HTMLDialogElement | null>(null);
+	const store = mode();
+	const dark = $derived(store.resolved === 'dark');
 
 	const isActive = (slug: string) =>
 		page.url.pathname === `/${slug}` || page.url.pathname.startsWith(`/${slug}/`);
@@ -18,21 +21,26 @@
 	}
 </script>
 
-<header class="app-header bg-surface bb row ycenter xbetween gap-lg">
-	<Logo />
-	<nav class="header-nav row ycenter gap-xs hide-mobile" aria-label="Packages">
-		<a href="/fractalsvelte-ui">Components</a>
+<header class="app-header bg-surface row ycenter xbetween gap-lg">
+	<a class="logo-link" href="/">
+		{#if dark}
+		<img class="logotype" src="/images/logotype-dark.png" alt="logo"/>
+		{:else}
+		<img class="logotype" src="/images/logotype-light.png" alt="logo"/>
+		{/if}
+	</a>
+	<nav class="header-nav row ycenter gap-bs hide-mobile" aria-label="Packages">
 		{#each projects as project (project.slug)}
 			<a
 				href="/{project.slug}"
-				class="nav-link {isActive(project.slug) ? 'text-theme' : 'text-secondary link-plain'}"
+				class="{isActive(project.slug) ? 'text-theme' : 'text-primary link-plain'}"
 				aria-current={isActive(project.slug) ? 'page' : undefined}
 			>
-				{project.slug}
+				{project.name}
 			</a>
 		{/each}
-				<a href={GITHUB} class="nav-link row ycenter text-secondary link-plain" aria-label="GitHub">
-			<Icon icon={reGithubLine} size={18} />
+		<a href={GITHUB} target="_blank" rel="noreferrer" class="iconbox" aria-label="GitHub">
+			<Icon icon={reGithubLine} size={16} />
 		</a>
 		<ModeToggle />
 		<!-- iconbox sets display, so visibility lives on a wrapper -->

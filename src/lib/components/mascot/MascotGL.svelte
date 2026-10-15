@@ -52,7 +52,7 @@
 	}
 
 	let {
-		size = 360,
+		size = 32,
 		mode = 'lit',
 		tilt = 24,
 		blink = true,
@@ -429,7 +429,7 @@
 
 <span class="mascotgl {className}" class:mascotgl-compact={compact}>
 	{#if useGL && ready}
-		<svg class="mascotgl-spacer" width={size} height={size} role="img" aria-label={alt}></svg>
+		<svg class="mascotgl-spacer" width=32 height=32 role="img" aria-label={alt}></svg>
 	{:else}
 		<Mascot {size} {alt} />
 	{/if}

@@ -3,6 +3,9 @@
 import { clamp } from '#lib/seo.js';
 import { guides, packageCount, packageHref, projects, type Package } from '#lib/site.js';
 import { libraries } from './components';
+import { components as liveComponents } from './fractalsvelte-ui';
+import { components as liveMachines } from './machines-ui';
+import { slug } from '#lib/fractalsvelte-ui/catalog.js';
 
 export type Card = {
 	caption: string;
@@ -131,6 +134,40 @@ function build(): SitePage[] {
 				}
 			});
 		}
+	}
+
+	// Live fractalsvelte-ui docs: one page per component, under the package's own route
+	for (const c of liveComponents) {
+		pages.push({
+			path: `/fractalsvelte-ui/${slug(c.name)}`,
+			name: `${c.name} (fractalsvelte-ui, live)`,
+			description: c.description,
+			section: 'fractalsvelte-ui live docs',
+			card: {
+				caption: 'Live docs',
+				eyebrow: 'Svelte 5 component · fractalsvelte-ui',
+				title: c.name,
+				subtitle: clamp(c.description, 120),
+				code: `import { ${c.name} }`
+			}
+		});
+	}
+
+	// Live machines-ui docs, likewise
+	for (const c of liveMachines) {
+		pages.push({
+			path: `/machines-ui/${c.slug}`,
+			name: `${c.displayName} (machines-ui, live)`,
+			description: c.description,
+			section: 'machines-ui live docs',
+			card: {
+				caption: 'Live docs',
+				eyebrow: 'Svelte 5 component · machines-ui',
+				title: c.displayName,
+				subtitle: clamp(c.description, 120),
+				code: `import { ${c.name} }`
+			}
+		});
 	}
 
 	return pages.map((page) => ({ ...page, card: cardText(page.card) }));
