@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Icon } from 'fractalicons';
-	import { luArrowRight } from 'fractalicons/lucide';
+	import { luArrowRight, luExternalLink } from 'fractalicons/lucide';
 	import { reGithubLine, reNpmjsLine } from 'fractalicons/remix';
 	import CodeBlock from '#lib/components/CodeBlock.svelte';
 	import DocsShell from '#lib/components/DocsShell.svelte';
@@ -71,11 +71,6 @@
 	]);
 </script>
 
-<svelte:head>
-	<title>{data.isMain ? project.slug : shortName} — fractalsvelte</title>
-	<meta name="description" content={pkg.description} />
-</svelte:head>
-
 <DocsShell {toc}>
 	<PageHeader eyebrow={project.kind} {mark} lede={data.isMain ? project.summary : pkg.description}>
 		<div class="row ycenter gap-xs wrap">
@@ -95,6 +90,12 @@
 			<a href={project.repo} class="btn row gap-xs" data-variant="outline" data-shape="square">
 				<Icon icon={reGithubLine} size={16} /> GitHub
 			</a>
+			{#each project.links ?? [] as link (link.href)}
+				<a href={link.href} class="btn row gap-xs" data-variant="outline" data-shape="square">
+					<Icon icon={luExternalLink} size={16} />
+					{link.label}
+				</a>
+			{/each}
 		</div>
 	</PageHeader>
 
@@ -119,7 +120,7 @@
 				{#each project.stats as stat (stat.label)}
 					<div class="box gap-xs">
 						<span class="text-2xl weight-800 ls-tight-xl lh11 text-primary">{stat.value}</span>
-						<span class="fs-eyebrow text-sm weight-600 text-muted">{stat.label}</span>
+						<span class="fs-eyebrow text-body-sm weight-600 text-muted">{stat.label}</span>
 					</div>
 				{/each}
 			</div>
@@ -167,9 +168,7 @@
 						aria-current={current ? 'page' : undefined}
 					>
 						<span class="box gap-xs minw0">
-							<span class="link-title text-bs weight-700 {current ? 'text-theme' : ''}"
-								>{p.name}</span
-							>
+							<span class="link-title page-heading-bs {current ? 'text-theme' : ''}">{p.name}</span>
 							<span class="text-body-sm text-secondary">{p.role}</span>
 						</span>
 						<span class="row ycenter gap-sm shrink-0 text-muted">

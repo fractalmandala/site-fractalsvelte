@@ -105,3 +105,10 @@ h2 code, h3 code, h4 code
 	display: inline-block
 	min-width: 100%
 	background: var(--theme-color-sub)
+
+// Mode-specific artwork (the logotype ships a dark-ink and a white-ink version)
+[data-mode='dark'] .fs-only-light // shown only in light mode
+	display: none
+
+[data-mode='light'] .fs-only-dark // shown only in dark mode
+	display: none

@@ -18,6 +18,8 @@ export type ComponentDoc = {
 	slug: string;
 	name: string;
 	group: string;
+	/** What people search for: "split button", "animated ASCII fire" */
+	phrase: string;
 	description: string;
 	/** What to paste to use it, or null when the component isn't exported */
 	imports: string | null;
@@ -36,6 +38,9 @@ export type ComponentLibrary = {
 	groups: { id: string; label: string }[];
 	components: ComponentDoc[];
 };
+
+/** PascalCase to search words: IconButton → icon button, Card3D → card 3d */
+const words = (name: string) => name.replace(/([a-z])([A-Z0-9])/g, '$1 $2').toLowerCase();
 
 const kebab = (name: string) => name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 const label = (id: string) => id.charAt(0).toUpperCase() + id.slice(1);
@@ -85,6 +90,7 @@ function fromManifest(): ComponentLibrary {
 			slug: kebab(c.name),
 			name: c.name,
 			group: c.category,
+			phrase: words(c.name),
 			description: c.description,
 			imports: c.importSnippet,
 			examples: c.usageSnippet ? [c.usageSnippet] : [],
@@ -114,6 +120,15 @@ type MachineProp = {
 	description?: string;
 };
 
+function machinePhrase(family: string, displayName: string) {
+	const w = words(displayName);
+	if (family === 'graphs') return `ASCII ${w} chart`;
+	if (family === 'animated') return `animated ASCII ${w}`;
+	if (family === 'flow') return `workflow ${w.replace(/^flow /, '')}`;
+	if (family === 'diagram') return w.includes('diagram') ? `ASCII ${w}` : `ASCII ${w} diagram`;
+	return `ASCII ${w}`;
+}
+
 function fromMachines(): ComponentLibrary {
 	const order = ['frame', 'graphs', 'animated', 'diagram', 'flow'];
 	const prop = (p: MachineProp): ApiProp => ({
@@ -129,6 +144,7 @@ function fromMachines(): ComponentLibrary {
 		slug: c.slug,
 		name: c.name,
 		group: c.family,
+		phrase: machinePhrase(c.family, c.displayName),
 		description: c.description,
 		imports: c.exported
 			? `import '@fractaldesign/machines-ui/style.css';\nimport { ${c.name} } from '@fractaldesign/machines-ui';`

@@ -26,11 +26,6 @@
 	);
 </script>
 
-<svelte:head>
-	<title>Components — {data.project.slug} — fractalsvelte</title>
-	<meta name="description" content="API reference for every {data.project.slug} component." />
-</svelte:head>
-
 <DocsShell {toc}>
 	<PageHeader
 		eyebrow={data.project.slug}

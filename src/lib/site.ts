@@ -21,6 +21,8 @@ export type Package = {
 	/** Companions installed alongside: [runtime deps, dev deps] */
 	with?: { deps?: string[]; dev?: string[] };
 	role: string;
+	/** Search snippet for this package's page, when it isn't the project page */
+	seo?: { title: string; description: string };
 	version: string;
 	description: string;
 	license: string;
@@ -33,10 +35,14 @@ export type Project = {
 	mark: [string, string];
 	kind: string;
 	summary: string;
+	/** Search title (≤60) and description (≤160), written for the queries people type */
+	seo: { title: string; description: string };
 	repo: string;
 	packages: Package[];
 	/** Has a generated component API reference under /<slug>/components */
 	components?: boolean;
+	/** Extra outbound links shown on the project page, e.g. a live examples site */
+	links?: { label: string; href: string }[];
 	stats: Stat[];
 	features: Feature[];
 	quickstart: Snippet[];
@@ -57,6 +63,11 @@ export const projects: Project[] = [
 		kind: 'Styling system',
 		summary:
 			'A composition styling system, shipped as plain CSS and as editable Sass. The class registry is the public API: compose in markup, write no stylesheet.',
+		seo: {
+			title: 'fractalstyler \u2014 CSS styling system for Svelte & SvelteKit',
+			description:
+				'A class-based CSS styling system for Svelte and SvelteKit: 498 utility classes, design tokens and runtime presets, as plain CSS or editable Sass.'
+		},
 		repo: `${GITHUB}/fractalstyler`,
 		packages: [
 			pkg({
@@ -127,6 +138,11 @@ export const projects: Project[] = [
 		kind: 'Component library',
 		summary:
 			'A token-driven Svelte 5 runes component library. Pick a variant, shape and size with props, and restyle anything with your own CSS — the library ships in a cascade layer, so your styles always win.',
+		seo: {
+			title: 'fractalsvelte-ui \u2014 Svelte 5 component library for SvelteKit',
+			description:
+				'124 Svelte 5 components for SvelteKit: buttons, forms, dialogs, data tables and motion. Typed variant, size and shape props, and your CSS always wins.'
+		},
 		repo: `${GITHUB}/fractalsvelte-ui`,
 		components: true,
 		packages: [
@@ -210,7 +226,13 @@ export const projects: Project[] = [
 		kind: 'Character-drawn components',
 		summary:
 			'Svelte 5 components drawn with characters: graphs, animated terminals, diagrams, and a node-and-edge workflow builder. Dashed frames, block glyphs, monospace type.',
+		seo: {
+			title: 'machines-ui \u2014 ASCII graphs, terminals & diagrams for Svelte',
+			description:
+				'Svelte 5 components drawn with characters: ASCII charts and graphs, animated terminals, diagrams and a node-based workflow builder. No SVG, no canvas.'
+		},
 		repo: `${GITHUB}/machines-ui`,
+		links: [{ label: 'Live examples', href: 'https://machines.fractalsvelte.dev' }],
 		components: true,
 		packages: [
 			pkg({
@@ -287,6 +309,11 @@ export const projects: Project[] = [
 		kind: 'Syntax highlighting',
 		summary:
 			'Lightweight, Svelte-first syntax highlighting with first-class indented Sass. Returns an HTML string without a DOM, with adapters for Svelte, mdsvex and remark.',
+		seo: {
+			title: 'fractalpop \u2014 fast syntax highlighting for Svelte & SvelteKit',
+			description:
+				'Lightweight syntax highlighter for Svelte, SvelteKit, mdsvex and remark. 32 languages, first-class indented Sass, about 5 KB gzipped, no DOM needed.'
+		},
 		repo: `${GITHUB}/fractalpop`,
 		packages: [
 			pkg({
@@ -300,6 +327,11 @@ export const projects: Project[] = [
 				slug: 'svelte',
 				readme: 'pop-svelte',
 				repoPath: 'packages/svelte',
+				seo: {
+					title: 'pop-svelte \u2014 Svelte & SvelteKit code highlighting components',
+					description:
+						'Svelte 5 components for syntax highlighting in SvelteKit: Highlight, Code with line numbers, a live Editor and a FileTree. Server-rendered, no flash.'
+				},
 				with: { deps: ['@fractaldesign/pop'] },
 				role: 'Highlight, Code, Editor and FileTree components'
 			}),
@@ -308,6 +340,11 @@ export const projects: Project[] = [
 				slug: 'mdsvex',
 				readme: 'pop-mdsvex',
 				repoPath: 'packages/mdsvex',
+				seo: {
+					title: 'pop-mdsvex \u2014 mdsvex code highlighting for SvelteKit',
+					description:
+						'Highlight fenced code in mdsvex .svx and .md files with fractalpop. One line in svelte.config.js, line highlighting with {2,4-6}, Svelte-safe output.'
+				},
 				dev: true,
 				with: { dev: ['mdsvex'], deps: ['@fractaldesign/pop'] },
 				role: 'Highlighter hook for .svx and .md files'
@@ -317,6 +354,11 @@ export const projects: Project[] = [
 				slug: 'remark',
 				readme: 'pop-remark',
 				repoPath: 'packages/remark',
+				seo: {
+					title: 'pop-remark \u2014 remark plugin for Markdown & MDX highlighting',
+					description:
+						'A remark plugin that highlights fenced code in Markdown and MDX with fractalpop. Works in Astro, Next MDX, Docusaurus and any unified pipeline.'
+				},
 				with: { deps: ['@fractaldesign/pop'] },
 				role: 'remark plugin for Markdown and MDX'
 			})

@@ -12,7 +12,7 @@
 <a href="/{project.slug}" class="link-parent box gap-md pad-xl bg-surface fs-shelf-cell hfull">
 	<div class="box gap-xs">
 		<span class="row ycenter xbetween gap-sm">
-			<Wordmark mark={project.mark} class="link-title text-xl weight-800 ls-tight-lg" />
+			<Wordmark mark={project.mark} class="link-title page-heading-xl" />
 			<span class="text-muted"><Icon icon={luArrowRight} size={18} /></span>
 		</span>
 		<span class="text-body-sm text-muted">v{main.version} · {project.kind}</span>

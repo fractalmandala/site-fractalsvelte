@@ -3,6 +3,7 @@
 	import { Icon } from 'fractalicons';
 	import { luMenu, luX } from 'fractalicons/lucide';
 	import { reGithubLine } from 'fractalicons/remix';
+	import Logo from './Logo.svelte';
 	import ModeToggle from './ModeToggle.svelte';
 	import Wordmark from './Wordmark.svelte';
 	import { GITHUB, projects } from '#lib/site.js';
@@ -18,9 +19,7 @@
 </script>
 
 <header class="app-header bg-surface bb row ycenter xbetween gap-lg">
-	<a href="/" class="text-lg weight-800 ls-tight-lg" aria-label="fractalsvelte home">
-		<Wordmark mark={['fractal', 'svelte']} />
-	</a>
+	<Logo />
 
 	<nav class="row ycenter gap-xs hide-mobile" aria-label="Packages">
 		{#each projects as project (project.slug)}
@@ -63,7 +62,7 @@
 >
 	<div class="box gap-md">
 		<div class="row ycenter xbetween">
-			<span class="text-lg weight-800 ls-tight-lg"><Wordmark mark={['fractal', 'svelte']} /></span>
+			<Logo />
 			<button
 				type="button"
 				data-variant="iconbox"
@@ -82,7 +81,7 @@
 					class="nav-link box gap-xs {isActive(project.slug) ? 'bg-sunken' : ''}"
 					onclick={() => menu?.close()}
 				>
-					<Wordmark mark={project.mark} class="text-bs weight-700" />
+					<Wordmark mark={project.mark} class="page-heading-bs" />
 					<span class="text-body-sm text-muted">{project.kind}</span>
 				</a>
 			{/each}

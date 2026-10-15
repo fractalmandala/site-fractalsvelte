@@ -18,18 +18,10 @@
 	];
 </script>
 
-<svelte:head>
-	<title>fractalsvelte — packages for SvelteKit</title>
-	<meta
-		name="description"
-		content="A styling system, two component libraries and a syntax highlighter for Svelte 5 and SvelteKit. Install instructions, usage and documentation for every package."
-	/>
-</svelte:head>
-
 <main class="grow px-lg">
 	<div class="content-section narrow-wide box gap-3xl">
 		<section class="box xcenter gap-lg pt-3xl">
-			<p class="fs-eyebrow text-sm weight-600 text-theme">
+			<p class="fs-eyebrow text-body-sm weight-600 text-theme">
 				{projects.length} projects · {packageCount} packages · one contract
 			</p>
 			<h1 class="weight-800 lh11">
@@ -52,8 +44,8 @@
 			<div class="row wrap xbetween gap-xl">
 				{#each suite as stat (stat.label)}
 					<div class="box gap-xs">
-						<span class="text-3xl weight-800 ls-tight-xl lh11 text-primary">{stat.value}</span>
-						<span class="fs-eyebrow text-sm weight-600 text-muted">{stat.label}</span>
+						<span class="page-title text-primary">{stat.value}</span>
+						<span class="fs-eyebrow text-body-sm weight-600 text-muted">{stat.label}</span>
 					</div>
 				{/each}
 			</div>
@@ -80,7 +72,7 @@
 					<div class="grid-2 gap-lg">
 						<div class="box gap-sm">
 							<a href="/{project.slug}" class="link-parent">
-								<Wordmark mark={project.mark} class="link-title text-xl weight-800 ls-tight-lg" />
+								<Wordmark mark={project.mark} class="link-title page-heading-xl" />
 							</a>
 							<p class="text-body text-secondary lh16">
 								{project.kind}. {project.packages[0].role}.

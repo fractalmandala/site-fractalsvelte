@@ -29,7 +29,7 @@
 <nav class="box gap-lg text-body-sm" aria-label="Documentation">
 	{#each sections as { project, links } (project.slug)}
 		<div class="box gap-xs">
-			<p class="fs-eyebrow text-sm weight-600 text-muted">{project.kind}</p>
+			<p class="fs-eyebrow text-body-sm weight-600 text-muted">{project.kind}</p>
 			<ul class="box">
 				{#each links as link (link.href)}
 					{@const active = isActive(link.href)}

@@ -3,6 +3,7 @@
 	import { luArrowLeft, luArrowRight } from 'fractalicons/lucide';
 	import { reGithubLine } from 'fractalicons/remix';
 	import CodeBlock from '#lib/components/CodeBlock.svelte';
+	import InstallTabs from '#lib/components/InstallTabs.svelte';
 	import DocsShell from '#lib/components/DocsShell.svelte';
 	import PageHeader from '#lib/components/PageHeader.svelte';
 	import PropsTable from '#lib/components/PropsTable.svelte';
@@ -14,22 +15,23 @@
 	const base = $derived(`/${data.project.slug}/components`);
 	const toc = $derived(
 		[
+			{ depth: 2, id: 'install', text: 'Install' },
 			c.imports && { depth: 2, id: 'import', text: 'Import' },
 			c.examples.length && { depth: 2, id: 'usage', text: 'Usage' },
 			{ depth: 2, id: 'props', text: 'Props' },
 			c.snippets.length && { depth: 2, id: 'snippets', text: 'Snippets' },
-			c.source && { depth: 2, id: 'source', text: 'Source' }
+			c.source && { depth: 2, id: 'source', text: 'Source' },
+			data.related.length && { depth: 2, id: 'related', text: 'Related' }
 		].filter((e) => !!e)
 	);
 </script>
 
-<svelte:head>
-	<title>{c.name} — {data.project.slug} — fractalsvelte</title>
-	<meta name="description" content={c.description} />
-</svelte:head>
-
 <DocsShell {toc}>
-	<PageHeader eyebrow="{data.project.slug} · {data.group}" title={c.name} lede={c.description}>
+	<PageHeader
+		eyebrow="Svelte 5 component · {data.project.slug} · {data.group}"
+		title={c.name}
+		lede={c.description}
+	>
 		<div class="row ycenter gap-sm wrap">
 			<a href={base} class="btn row gap-xs" data-variant="outline" data-shape="square">
 				<Icon icon={luArrowLeft} size={16} /> All components
@@ -39,6 +41,16 @@
 			</a>
 		</div>
 	</PageHeader>
+
+	<section class="box gap-md">
+		<h2 id="install" class="page-heading-xl text-primary">Install</h2>
+		<p class="text-body text-secondary lh16">
+			{c.name} is a Svelte 5 {c.phrase} component in
+			<a href="/{data.project.slug}" class="link">{data.project.packages[0].name}</a>. It works in
+			SvelteKit and in any Svelte 5 app.
+		</p>
+		<InstallTabs lines={data.install} />
+	</section>
 
 	{#if c.imports}
 		<section class="box gap-md">
@@ -92,6 +104,20 @@
 				</summary>
 				<CodeBlock title="{c.name}.svelte" code={c.source.code} html={c.source.html} />
 			</details>
+		</section>
+	{/if}
+
+	{#if data.related.length}
+		<section class="box gap-md">
+			<h2 id="related" class="page-heading-xl text-primary">Related components</h2>
+			<div class="grid-2 fs-shelf">
+				{#each data.related as r (r.slug)}
+					<a href="{base}/{r.slug}" class="link-parent box gap-xs pad-md bg-surface fs-shelf-cell">
+						<span class="link-title page-heading-bs">{r.name}</span>
+						<span class="text-body-sm text-secondary lh15">{r.description}</span>
+					</a>
+				{/each}
+			</div>
 		</section>
 	{/if}
 

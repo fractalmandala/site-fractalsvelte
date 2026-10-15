@@ -11,7 +11,7 @@
 	<div class="content-section narrow-wide box xcenter gap-xl pt-3xl">
 		<Frame caption="Error {page.status}" hot class="pad-2xl wfull">
 			<div class="box xcenter gap-md">
-				<p class="text-5xl weight-800 ls-tight-xl lh11 text-primary">{page.status}</p>
+				<h1 class="hero-name lh11 text-primary">{page.status}</h1>
 				<p class="text-body-lg text-secondary lh15">
 					{page.error?.message ?? 'Something went wrong.'}
 				</p>

@@ -12,12 +12,17 @@
 				if (mode === 'light' || mode === 'dark') document.documentElement.dataset.mode = mode;
 			} catch (e) {}
 		</script>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700;800&family=Google+Sans+Code:wght@400;500&display=swap"
+			rel="preload"
+			href="/fonts/google-sans-flex.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin="anonymous"
 		/>
+		<link rel="icon" href="/favicon.png" type="image/png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+		<meta name="theme-color" content="#FF3E00" />
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

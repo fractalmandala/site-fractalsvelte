@@ -5,7 +5,7 @@
 </script>
 
 <nav class="box gap-sm text-body-sm" aria-label="On this page">
-	<p class="fs-eyebrow text-sm weight-600 text-muted">On this page</p>
+	<p class="fs-eyebrow text-body-sm weight-600 text-muted">On this page</p>
 	<ul class="box gap-xs">
 		{#each entries as entry (entry.id)}
 			<li class={entry.depth > 2 ? 'pl-md' : ''}>

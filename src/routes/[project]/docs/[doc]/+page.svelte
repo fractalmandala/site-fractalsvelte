@@ -12,11 +12,6 @@
 	const Doc = $derived(data.doc.component);
 </script>
 
-<svelte:head>
-	<title>{meta.title} — {data.project.slug} — fractalsvelte</title>
-	{#if meta.description}<meta name="description" content={meta.description} />{/if}
-</svelte:head>
-
 <DocsShell toc={meta.toc}>
 	<PageHeader eyebrow={data.project.slug} title={meta.title} lede={meta.description}>
 		<p class="text-body-sm text-muted">

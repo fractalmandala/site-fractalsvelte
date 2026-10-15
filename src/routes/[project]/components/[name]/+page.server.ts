@@ -1,7 +1,8 @@
 import { error } from '@sveltejs/kit';
 import { libraries } from '#lib/server/components.js';
 import { highlightCode } from '#lib/server/highlight.js';
-import { findProject } from '#lib/site.js';
+import { clamp, fitTitle, softwareId, techArticle, type Seo } from '#lib/seo.js';
+import { findProject, installLines } from '#lib/site.js';
 import type { EntryGenerator, PageServerLoad } from './$types';
 
 export const entries: EntryGenerator = () =>
@@ -20,10 +21,44 @@ export const load: PageServerLoad = ({ params }) => {
 	const siblings = library.components.filter((c) => c.group === component.group);
 	const at = siblings.indexOf(component);
 	const link = (c?: (typeof siblings)[number]) => (c ? { slug: c.slug, name: c.name } : undefined);
+	// Up to six neighbours from the same group, wrapping around — internal links for readers and crawlers.
+	const related = Array.from({ length: Math.min(6, siblings.length - 1) }, (_, i) => {
+		const c = siblings[(at + i + 1) % siblings.length];
+		return { slug: c.slug, name: c.name, description: clamp(c.description, 110) };
+	});
+
+	const pkg = project.packages[0];
+	const base = `/${project.slug}/components`;
+	const path = `${base}/${component.slug}`;
+	const seo: Seo = {
+		title: fitTitle(
+			`${component.name} — Svelte 5 ${component.phrase} component · ${project.slug}`,
+			`${component.name} — Svelte 5 ${component.phrase} component`,
+			`${component.name} — Svelte 5 component · ${project.slug}`,
+			`${component.name} — Svelte 5 component`
+		),
+		description: clamp(
+			`A Svelte 5 ${component.phrase} component for SvelteKit. ${component.description}`
+		),
+		path,
+		imageAlt: `${component.name}, a Svelte 5 ${component.phrase} component from ${project.slug}`,
+		type: 'article',
+		modified: pkg.published,
+		breadcrumbs: [
+			{ name: 'fractalsvelte', path: '/' },
+			{ name: project.slug, path: `/${project.slug}` },
+			{ name: 'Components', path: base },
+			{ name: component.name, path }
+		]
+	};
+	seo.jsonLd = [techArticle(seo, softwareId(`/${project.slug}`))];
 
 	return {
+		seo,
 		project,
 		group: group?.label ?? component.group,
+		install: installLines(pkg),
+		related,
 		component: {
 			...component,
 			imports: component.imports && {

@@ -18,7 +18,7 @@
 </script>
 
 <header class="box gap-md">
-	<p class="fs-eyebrow text-sm weight-600 text-theme">{eyebrow}</p>
+	<p class="fs-eyebrow text-body-sm weight-600 text-theme">{eyebrow}</p>
 	<h1 class="text-4xl weight-800 ls-tight-xl lh11 text-primary">
 		{#if mark}<Wordmark {mark} />{:else}{title}{/if}
 	</h1>

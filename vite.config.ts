@@ -1,3 +1,4 @@
+import { sveltekitOG } from '@ethercorps/sveltekit-og/plugin';
 import adapter from '@sveltejs/adapter-vercel';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { mdsvex } from 'mdsvex';
@@ -20,6 +21,8 @@ export default defineConfig({
 			},
 
 			adapter: adapter()
-		})
+		}),
+		// share images and icons are rendered at build time by sveltekit-og (satori + resvg)
+		sveltekitOG()
 	]
 });
