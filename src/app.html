@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" data-mode="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="text-scale" content="scale" />
+		<script>
+			// Restore the reader's colour mode before first paint. fractalstyler
+			// defines every colour token under [data-mode], so this must run early.
+			try {
+				var mode = localStorage.getItem('fractalsvelte:mode');
+				if (mode === 'light' || mode === 'dark') document.documentElement.dataset.mode = mode;
+			} catch (e) {}
+		</script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700;800&family=Google+Sans+Code:wght@400;500&display=swap"
+		/>
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div class="app-shell">%sveltekit.body%</div>
+	</body>
+</html>

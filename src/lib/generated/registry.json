@@ -1,0 +1,44 @@
+{
+	"@fractaldesign/fractalstyler": {
+		"version": "1.2.0",
+		"description": "A composition styling system, shipped as plain CSS and as editable SASS. The class registry is the public API: compose in markup, write no stylesheet.",
+		"license": "MIT",
+		"published": "2026-10-10T23:59:57.133Z"
+	},
+	"@fractaldesign/fractalsvelte-ui": {
+		"version": "0.7.0",
+		"description": "Massive, modern, token-driven Svelte 5 runes component library for SvelteKit. Zero Tailwind. Scoped, beautiful, performant.",
+		"license": "MIT",
+		"published": "2026-10-15T11:10:48.794Z"
+	},
+	"@fractaldesign/machines-ui": {
+		"version": "0.0.1",
+		"description": "Svelte 5 components drawn with characters: graphs, animated terminals, diagrams, and a node-and-edge workflow builder.",
+		"license": "MIT",
+		"published": "2026-10-07T06:50:17.171Z"
+	},
+	"@fractaldesign/pop": {
+		"version": "0.1.0",
+		"description": "Lightweight, Svelte-first syntax highlighting with first-class indented Sass. Returns HTML without a DOM.",
+		"license": "MIT",
+		"published": "2026-10-05T02:14:21.956Z"
+	},
+	"@fractaldesign/pop-svelte": {
+		"version": "0.1.1",
+		"description": "Svelte / SvelteKit components and actions for fractalpop syntax highlighting",
+		"license": "MIT",
+		"published": "2026-10-05T02:31:36.221Z"
+	},
+	"@fractaldesign/pop-mdsvex": {
+		"version": "0.1.1",
+		"description": "mdsvex highlighter for fractalpop — highlights code fences in .svx files",
+		"license": "MIT",
+		"published": "2026-10-05T02:31:59.333Z"
+	},
+	"@fractaldesign/pop-remark": {
+		"version": "0.1.1",
+		"description": "remark plugin for fractalpop — highlights fenced code in .md and .mdx",
+		"license": "MIT",
+		"published": "2026-10-05T02:34:24.063Z"
+	}
+}
