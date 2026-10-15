@@ -18,7 +18,7 @@
 	];
 </script>
 
-<main class="grow px-lg">
+<main class="app-main grow px-lg">
 	<div class="content-section narrow-wide box gap-3xl">
 		<section class="box xcenter gap-lg pt-3xl">
 			<p class="fs-eyebrow text-body-sm weight-600 text-theme">

@@ -43,6 +43,7 @@
 		"#og/*": "./og/*"
 	},
 	"dependencies": {
+		"@fractaldesign/fractalsvelte-ui": "^0.6.1",
 		"@fractaldesign/pop": "^0.1.0",
 		"fractalicons": "^0.4.0"
 	}

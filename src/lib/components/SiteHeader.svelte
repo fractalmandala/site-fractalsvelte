@@ -20,8 +20,8 @@
 
 <header class="app-header bg-surface bb row ycenter xbetween gap-lg">
 	<Logo />
-
-	<nav class="row ycenter gap-xs hide-mobile" aria-label="Packages">
+	<nav class="header-nav row ycenter gap-xs hide-mobile" aria-label="Packages">
+		<a href="/fractalsvelte-ui">Components</a>
 		{#each projects as project (project.slug)}
 			<a
 				href="/{project.slug}"
@@ -31,10 +31,7 @@
 				{project.slug}
 			</a>
 		{/each}
-	</nav>
-
-	<div class="row ycenter gap-xs">
-		<a href={GITHUB} class="nav-link row ycenter text-secondary link-plain" aria-label="GitHub">
+				<a href={GITHUB} class="nav-link row ycenter text-secondary link-plain" aria-label="GitHub">
 			<Icon icon={reGithubLine} size={18} />
 		</a>
 		<ModeToggle />
@@ -51,7 +48,7 @@
 				<Icon icon={luMenu} size={18} />
 			</button>
 		</span>
-	</div>
+	</nav>
 </header>
 
 <dialog
