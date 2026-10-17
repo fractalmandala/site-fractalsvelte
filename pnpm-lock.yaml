@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@fractaldesign/fractalsvelte-ui':
-        specifier: file:../../packages/fractalsvelte-ui
-        version: file:../../packages/fractalsvelte-ui(svelte@5.57.2)
+        specifier: ^0.8.0
+        version: 0.8.0(@fractaldesign/fractalstyler@1.2.0(sass@1.105.1)(svelte@5.57.2)(zod@4.6.7))(fractalicons@0.4.0(svelte@5.57.2))(svelte@5.57.2)
       '@fractaldesign/machines-ui':
-        specifier: file:../../packages/machines-ui
-        version: file:../../packages/machines-ui(svelte@5.57.2)
+        specifier: ^0.1.0
+        version: 0.1.0(svelte@5.57.2)
       '@fractaldesign/pop':
         specifier: ^0.1.0
         version: 0.1.0
@@ -89,13 +89,20 @@ packages:
       sass:
         optional: true
 
-  '@fractaldesign/fractalsvelte-ui@file:../../packages/fractalsvelte-ui':
-    resolution: {directory: ../../packages/fractalsvelte-ui, type: directory}
+  '@fractaldesign/fractalsvelte-ui@0.8.0':
+    resolution: {integrity: sha512-R/oqn9nXDVCCT+M5m2gAoHzji7ivws+JxjLY4SBc+C0KNCpmNV7k5KCIprEsaR9IUjh1jkGBE7PfQY1ESm01UA==}
     peerDependencies:
-      svelte: ^5.20.0
+      '@fractaldesign/fractalstyler': ^1.2.0
+      fractalicons: ^0.4.0
+      svelte: ^5.0.0
+    peerDependenciesMeta:
+      '@fractaldesign/fractalstyler':
+        optional: true
+      fractalicons:
+        optional: true
 
-  '@fractaldesign/machines-ui@file:../../packages/machines-ui':
-    resolution: {directory: ../../packages/machines-ui, type: directory}
+  '@fractaldesign/machines-ui@0.1.0':
+    resolution: {integrity: sha512-xm3H2xyTQEuqghrH7lcuB8DR118uB4njSGel2OvmV1/t5ILikd6tUW1V/trnS7MOAG5Ii45xPBdkCs+8zl6dVg==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -1373,11 +1380,14 @@ snapshots:
       - supports-color
       - zod
 
-  '@fractaldesign/fractalsvelte-ui@file:../../packages/fractalsvelte-ui(svelte@5.57.2)':
+  '@fractaldesign/fractalsvelte-ui@0.8.0(@fractaldesign/fractalstyler@1.2.0(sass@1.105.1)(svelte@5.57.2)(zod@4.6.7))(fractalicons@0.4.0(svelte@5.57.2))(svelte@5.57.2)':
     dependencies:
       svelte: 5.57.2
+    optionalDependencies:
+      '@fractaldesign/fractalstyler': 1.2.0(sass@1.105.1)(svelte@5.57.2)(zod@4.6.7)
+      fractalicons: 0.4.0(svelte@5.57.2)
 
-  '@fractaldesign/machines-ui@file:../../packages/machines-ui(svelte@5.57.2)':
+  '@fractaldesign/machines-ui@0.1.0(svelte@5.57.2)':
     dependencies:
       clsx: 2.1.1
       svelte: 5.57.2

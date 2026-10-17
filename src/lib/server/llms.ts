@@ -2,7 +2,7 @@
 // markdown), so AI assistants and AI search can read and cite the docs.
 import { absolute } from '#lib/seo.js';
 import { guides, projects } from '#lib/site.js';
-import { libraries } from './components';
+import { docSets } from './docs/registry.js';
 import { sitePages } from './pages';
 
 const raw = import.meta.glob<string>('/src/content/**/*.md', {
@@ -56,17 +56,17 @@ export function llmsFull() {
 				''
 			);
 		}
-		const library = libraries[project.slug];
-		if (!library) continue;
-		out.push(`## ${project.slug} component reference`, '');
-		for (const c of library.components) {
-			out.push(`### ${c.name}`, '', c.description, '');
-			if (c.imports) out.push('```ts', c.imports, '```', '');
+	}
+	for (const set of docSets) {
+		out.push(`## ${set.title} component reference`, '');
+		for (const c of set.components) {
+			out.push(`### ${c.displayName}`, '', c.description, '');
+			if (c.importSnippet) out.push('```ts', c.importSnippet, '```', '');
 			for (const example of c.examples) out.push('```svelte', example, '```', '');
 			if (c.props.length) {
 				out.push('Props:', '');
 				for (const p of c.props) {
-					const values = p.values ? ` (${p.values})` : '';
+					const values = p.values?.length ? ` (${p.values.join(' | ')})` : '';
 					const fallback = p.default ? `, default ${p.default}` : '';
 					const about = p.description ? ` — ${p.description}` : '';
 					out.push(`- \`${p.name}\`: \`${p.type}\`${values}${fallback}${about}`);

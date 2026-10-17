@@ -1,11 +1,6 @@
-// The live documentation for @fractaldesign/fractalsvelte-ui. Every component has its
-// own page at src/routes/fractalsvelte-ui/<slug>/+page.svelte, whose live demo is
-// also printed as the usage example, so the two can never disagree.
-
-export const PACKAGE = '@fractaldesign/fractalsvelte-ui';
-export const BASE = '/fractalsvelte-ui';
-
-/** Catalogue order and headings */
+// Catalogue order for the fractalsvelte-ui and fstyled docs. The live docs
+// themselves live in src/lib/fractalsvelte-ui/demos/ and src/lib/fstyled/demos/,
+// described by the registry in src/lib/server/docs/registry.ts.
 export const categories = [
 	{ id: 'actions', label: 'Actions & buttons' },
 	{ id: 'forms', label: 'Forms & inputs' },
@@ -18,6 +13,3 @@ export const categories = [
 	{ id: 'blocks', label: 'UI blocks' },
 	{ id: 'doc', label: 'Documentation helpers' }
 ] as const;
-
-/** IconButton → icon-button, Card3D → card-3d: the page's folder name */
-export const slug = (name: string) => name.replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase();

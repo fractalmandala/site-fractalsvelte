@@ -29,12 +29,16 @@
 		const code = button?.closest('figure')?.querySelector('pre');
 		if (!button || !code) return;
 		await navigator.clipboard.writeText(code.innerText);
-		button.textContent = 'Copied';
-		setTimeout(() => (button.textContent = 'Copy'), 1600);
+		button.title = 'Copied';
+		button.setAttribute('aria-label', 'Copied');
+		setTimeout(() => {
+			button.title = 'Copy code';
+			button.setAttribute('aria-label', 'Copy code');
+		}, 1600);
 	}
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
-<div class="box gap-md" role="presentation" onclick={copy}>
+<div class="box gap-lg text-primary" role="presentation" onclick={copy}>
 	{@render children?.()}
 </div>

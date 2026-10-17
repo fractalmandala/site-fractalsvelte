@@ -6,7 +6,6 @@
 	import Logo from './Logo.svelte';
 	import ModeToggle from '#lib/mode/ModeToggle.svelte';
 	import { mode } from '#lib/mode/mode.svelte.js';
-	import Wordmark from './Wordmark.svelte';
 	import { GITHUB, projects } from '#lib/site.js';
 
 	let menu = $state<HTMLDialogElement | null>(null);
@@ -86,8 +85,7 @@
 					class="nav-link box gap-xs {isActive(project.slug) ? 'bg-sunken' : ''}"
 					onclick={() => menu?.close()}
 				>
-					<Wordmark mark={project.mark} class="page-heading-bs" />
-					<span class="text-body-sm text-muted">{project.kind}</span>
+					{project.name}
 				</a>
 			{/each}
 		</nav>

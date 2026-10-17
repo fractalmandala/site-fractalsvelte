@@ -18,7 +18,9 @@
 		"docs:sync": "pnpm docs:copy && pnpm docs:npm",
 		"check:seo": "node scripts/check-seo.ts",
 		"fonts": ".venv/bin/python scripts/build-fonts.py",
-		"lint:cui": "node ../../packages/ui-automation-playbook/affedo/scripts/cui-lint.mjs $(find src -name \"*.svelte\")"
+		"lint:cui": "node ../../packages/ui-automation-playbook/affedo/scripts/cui-lint.mjs $(find src -name \"*.svelte\")",
+		"check:docs": "node scripts/check-docs.ts",
+		"docs:scaffold": "node scripts/scaffold-docset.ts"
 	},
 	"devDependencies": {
 		"@ethercorps/sveltekit-og": "^4.4.0",
@@ -43,8 +45,8 @@
 		"#og/*": "./og/*"
 	},
 	"dependencies": {
-		"@fractaldesign/fractalsvelte-ui": "file:../../packages/fractalsvelte-ui",
-		"@fractaldesign/machines-ui": "file:../../packages/machines-ui",
+		"@fractaldesign/fractalsvelte-ui": "^0.8.0",
+		"@fractaldesign/machines-ui": "^0.1.0",
 		"@fractaldesign/pop": "^0.1.0",
 		"fractalicons": "^0.4.0"
 	}

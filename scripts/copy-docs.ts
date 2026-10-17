@@ -13,8 +13,7 @@ const read = (rel: string) => fs.readFile(path.join(PACKAGES, rel), 'utf8');
 
 /** Markdown guides, in reading order. Maintainer notes and archived docs stay behind. */
 type Guide = { slug: string; title: string; description: string } & (
-	| { file: string; recipes?: undefined }
-	| { recipes: string; file?: undefined }
+	{ file: string; recipes?: undefined } | { recipes: string; file?: undefined }
 );
 type Recipe = { name: string; intents: string[]; markup: string; notes: string };
 
@@ -123,6 +122,8 @@ await writeFile('src/lib/generated/docs.json', JSON.stringify(index, null, '\t')
 // Component API references, as each library's own docs pipeline emits them.
 const COMPONENTS = {
 	'fractalsvelte-ui': 'fractalsvelte-ui/src/lib/documentation/manifest.json',
+	// the fractalstyler edition (@fractaldesign/fractalsvelte-ui/styler)
+	'fractalsvelte-ui-styler': 'fractalsvelte-ui/src/lib/documentation/manifest.styler.json',
 	'machines-ui': 'machines-ui/src/docs/data/components.json'
 };
 for (const [project, file] of Object.entries(COMPONENTS)) {

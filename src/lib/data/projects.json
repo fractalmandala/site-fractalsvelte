@@ -1,0 +1,232 @@
+[
+  {
+    "name": "Fractalicons",
+    "slug": "fractalicons",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/fractalicons",
+    "npmlink": null,
+    "description": "Tree-shakeable Svelte 5 icon library consolidating 35,000+ static, Web Animations API animated, and shape-morphing icons across 34 families with short-prefix imports.",
+    "tags": [
+      "website"
+    ]
+  },
+  {
+    "name": "Fractalstyler",
+    "slug": "fractalstyler",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/fractalstyler",
+    "npmlink": "https://www.npmjs.com/package/@fractaldesign/fractalstyler",
+    "description": "Zero-stylesheet CSS and SASS composition styling system for Svelte and web apps where a strict semantic class registry and design tokens serve as the public API.",
+    "tags": [
+      "website"
+    ]
+  },
+  {
+    "name": "Fractalsvelte UI",
+    "slug": "fractalsvelte-ui",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/fractalsvelte-ui",
+    "npmlink": "https://www.npmjs.com/package/@fractaldesign/fractalsvelte-ui",
+    "description": "Token-driven Svelte 5 Runes component library for SvelteKit featuring 91+ accessible UI components, layouts, and motion primitives with scoped CSS and zero Tailwind dependencies.",
+    "tags": [
+      "website"
+    ]
+  },
+  {
+    "name": "Svutils",
+    "slug": "fractutils",
+    "status": "stale",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Zero-dependency, SSR-safe Svelte 5 Runes utility library providing reactive primitives for reduced motion, intervals, view transitions, clipboard, localStorage persistence, theme mode, and responsive breakpoints.",
+    "tags": []
+  },
+  {
+    "name": "GPUI Svelte",
+    "slug": "gpui-svelte",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/gpui-svelte",
+    "npmlink": "https://www.npmjs.com/package/@fractaldesign/gpui-svelte",
+    "description": "GPU-accelerated native desktop UI runtime and compiler for Svelte 5 built on Zed's Rust GPUI engine with 86+ typed native components in a standalone N-API package.",
+    "tags": []
+  },
+  {
+    "name": "Rta UI",
+    "slug": "grokbotmade",
+    "status": "stale",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Svelte 5 and SvelteKit base component library and interactive design studio powered by Fractalstyler tokens with self-contained scoped styles and zero Tailwind dependencies.",
+    "tags": []
+  },
+  {
+    "name": "Kinetics",
+    "slug": "kinetics",
+    "status": "stale",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Interactive motion gallery of 153 spring-physics micro-interactions for web interfaces with live physics parameter readouts and copy-paste CSS and Svelte 5 code.",
+    "tags": []
+  },
+  {
+    "name": "Machines UI",
+    "slug": "machines-ui",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/machines-ui",
+    "npmlink": "https://www.npmjs.com/package/@fractaldesign/machines-ui",
+    "description": "Monospace ASCII and character-drawn Svelte 5 component library featuring terminal animations, data graphs, technical diagrams, and a node-and-edge workflow builder.",
+    "tags": [
+      "website"
+    ]
+  },
+  {
+    "name": "Monocode",
+    "slug": "monocode",
+    "status": "current",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Bidirectional code-to-design-to-code Svelte 5 visual playground combining a live CSS hot-swap code workbench with an interactive visual canvas that computes layout geometry and exports clean markup.",
+    "tags": []
+  },
+  {
+    "name": "Negentropy",
+    "slug": "negentropy",
+    "status": "current",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Deterministic closed-world UI engine, Svelte AST linter, and declarative component generation pipeline for Svelte 5 and Fractalstyler that eliminates AI styling drift and CSS hallucinations.",
+    "tags": []
+  },
+  {
+    "name": "Negentropy UI",
+    "slug": "negentropy-ui",
+    "status": "current",
+    "gitlink": "https://github.com/fractalmandala/negentropy-ui",
+    "npmlink": "https://www.npmjs.com/package/@fractaldesign/negentropy",
+    "description": "Framework-agnostic deterministic UI compiler, 11-gate contract verification engine, and MCP-enabled prescriptive agent controller for zero-hallucination design systems across Svelte, React, and Vue.",
+    "tags": []
+  },
+  {
+    "name": "Fractalpop",
+    "slug": "pop",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/fractalpop",
+    "npmlink": "https://www.npmjs.com/package/@fractaldesign/pop",
+    "description": "Ultra-fast, zero-dependency, DOM-free syntax highlighting engine with first-class Svelte and indented Sass grammar support that outputs deterministic HTML strings on any runtime.",
+    "tags": [
+      "website"
+    ]
+  },
+  {
+    "name": "Fractalpop Markdown",
+    "slug": "pop-mdsvex",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/fractalpop",
+    "npmlink": "https://www.npmjs.com/package/@fractaldesign/pop-mdsvex",
+    "description": "Zero-hydration mdsvex syntax highlighter plugin powered by Fractalpop that highlights fenced code blocks in Markdown and .svx files with automatic Svelte character escaping.",
+    "tags": []
+  },
+  {
+    "name": "Fractalpop Remark",
+    "slug": "pop-remark",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/fractalpop",
+    "npmlink": "https://www.npmjs.com/package/@fractaldesign/pop-remark",
+    "description": "Unified and Remark AST plugin powered by Fractalpop that compiles fenced code blocks into syntax-highlighted HTML across Markdown and MDX pipelines including Astro, Next.js, and Docusaurus.",
+    "tags": []
+  },
+  {
+    "name": "Fractalpop Svelte",
+    "slug": "pop-svelte",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/fractalpop",
+    "npmlink": "https://www.npmjs.com/package/@fractaldesign/pop-svelte",
+    "description": "SSR-first Svelte 5 and SvelteKit syntax highlighting components and actions for Fractalpop that render zero-hydration, flash-free highlighted code blocks.",
+    "tags": []
+  },
+  {
+    "name": "Presets UI",
+    "slug": "presetui",
+    "status": "stale",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Zero-dependency Svelte 5 Runes dark and light theme state engine for SvelteKit featuring FOUC prevention, cross-tab sync, OS preference detection, and animated View Transition toggles.",
+    "tags": []
+  },
+  {
+    "name": "Spanda UI",
+    "slug": "spanda",
+    "status": "stale",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Svelte 5 motion component library packaging 153 spring-physics interactive UI primitives—from magnetic buttons and elastic counters to gliding tabs and gesture cards—into reusable SvelteKit components.",
+    "tags": []
+  },
+  {
+    "name": "Sveltekit Design",
+    "slug": "sveltekit",
+    "status": "current",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "SvelteKit 2 and Svelte 5 AI design benchmark studio for streaming parallel UI design variations across multiple LLM providers with server-side API key security and runtime-editable prompt templates.",
+    "tags": []
+  },
+  {
+    "name": "Sveltearc UI",
+    "slug": "svelte-arcui",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/sveltearc",
+    "npmlink": null,
+    "description": "Svelte 5 and SvelteKit design system ported from Arc UI combining headless Bits UI primitives, scoped CSS Modules on semantic tokens, and shared motion transitions without Tailwind.",
+    "tags": [
+      "website"
+    ]
+  },
+  {
+    "name": "Svelte Surface",
+    "slug": "svelte-surface",
+    "status": "current",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Live design-to-code workbench and surgical AST edit engine for SvelteKit and Vite that links running DOM elements to source files for bidirectional visual editing in a native macOS or web shell.",
+    "tags": []
+  },
+  {
+    "name": "Themepacks",
+    "slug": "themepacks",
+    "status": "published",
+    "gitlink": "https://github.com/fractalmandala/themepacks",
+    "npmlink": "https://www.npmjs.com/package/@fractaldesign/themepacks",
+    "description": "Standardized TypeScript theme registry and zero-dependency OKLCH/OKLab/sRGB color math engine with WCAG contrast utilities and multi-format theme compilers for Fractal Design systems.",
+    "tags": [
+      "website"
+    ]
+  },
+  {
+    "name": "Trellis Svelte",
+    "slug": "trellis-svelte",
+    "status": "current",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Dockable, tiling, and zoomable desktop-grade workspace layout engine for Svelte 5 featuring resizable split panes, floating panels, and reference IDE, component studio, and paint applications.",
+    "tags": []
+  },
+  {
+    "name": "UI Automation",
+    "slug": "ui-automation-playbook",
+    "status": "stale",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Reference architecture and runnable playbook for deterministic LLM UI generation combining a closed-vocabulary Bits UI compiler, an 11-gate contract verifier, and the cui-lint prescriptive agent linter.",
+    "tags": []
+  },
+  {
+    "name": "Unadi",
+    "slug": "unadi",
+    "status": "current",
+    "gitlink": null,
+    "npmlink": null,
+    "description": "Embeddable Elementor-style visual drag-and-drop page builder and runtime renderer for Svelte 5 and SvelteKit with host-owned persistence, HTML/CSS import, dynamic data bindings, and AI editing workflows.",
+    "tags": []
+  }
+]

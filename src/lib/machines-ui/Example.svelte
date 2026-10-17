@@ -3,7 +3,7 @@
 	// markup — read from the page's source on the server — prints underneath.
 	import { getContext, type Snippet } from 'svelte';
 	import CodeBlock from '#lib/components/CodeBlock.svelte';
-	import { EXAMPLES, type ExampleContext } from './catalog.js';
+	import { EXAMPLES, type ExampleContext } from '#lib/docs/examples.js';
 
 	let { children }: { children: Snippet } = $props();
 

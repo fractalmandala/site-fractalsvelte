@@ -2,10 +2,7 @@
 // share images, the sitemap and llms.txt, so none of them can drift from the routes.
 import { clamp } from '#lib/seo.js';
 import { guides, packageCount, packageHref, projects, type Package } from '#lib/site.js';
-import { libraries } from './components';
-import { components as liveComponents } from './fractalsvelte-ui';
-import { components as liveMachines } from './machines-ui';
-import { slug } from '#lib/fractalsvelte-ui/catalog.js';
+import { docSets, groupLabel } from './docs/registry.js';
 
 export type Card = {
 	caption: string;
@@ -99,75 +96,39 @@ function build(): SitePage[] {
 				}
 			});
 		}
+	}
 
-		const library = libraries[project.slug];
-		if (!library) continue;
-		const base = `/${project.slug}/components`;
+	// Live component docs: one index page and one page per component for every set in
+	// the docs registry, so a new library's pages appear here automatically.
+	for (const set of docSets) {
 		pages.push({
-			path: base,
-			name: `${project.slug} components`,
-			description: `API reference for all ${library.components.length} ${project.slug} components.`,
-			section: project.slug,
-			modified: main.published,
+			path: set.base,
+			name: `${set.title} components`,
+			description: `Live documentation for all ${set.components.length} ${set.title} components.`,
+			section: 'Component docs',
 			card: {
-				caption: 'Components',
-				eyebrow: `${project.slug} · Svelte 5`,
-				title: `${library.components.length} components`,
-				subtitle: library.groups.map((g) => g.label).join(' · '),
-				code: install(main)
+				caption: 'Live docs',
+				eyebrow: `${set.title} · Svelte 5`,
+				title: `${set.components.length} components`,
+				subtitle: set.groups.map((g) => g.label).join(' · '),
+				code: set.install
 			}
 		});
-		for (const c of library.components) {
-			const group = library.groups.find((g) => g.id === c.group)?.label ?? c.group;
+		for (const c of set.components) {
 			pages.push({
-				path: `${base}/${c.slug}`,
-				name: `${c.name} (${project.slug})`,
+				path: `${set.base}/${c.slug}`,
+				name: `${c.displayName} (${set.title}, live)`,
 				description: c.description,
-				section: `${project.slug} components`,
-				modified: main.published,
+				section: `${set.title} live docs`,
 				card: {
-					caption: group,
-					eyebrow: `Svelte 5 component · ${project.slug}`,
-					title: c.name,
+					caption: groupLabel(set, c.group),
+					eyebrow: `Svelte 5 component · ${set.title}`,
+					title: c.displayName,
 					subtitle: clamp(c.description, 120),
-					code: `import { ${c.name} }`
+					code: c.importSnippet ?? `import { ${c.name} }`
 				}
 			});
 		}
-	}
-
-	// Live fractalsvelte-ui docs: one page per component, under the package's own route
-	for (const c of liveComponents) {
-		pages.push({
-			path: `/fractalsvelte-ui/${slug(c.name)}`,
-			name: `${c.name} (fractalsvelte-ui, live)`,
-			description: c.description,
-			section: 'fractalsvelte-ui live docs',
-			card: {
-				caption: 'Live docs',
-				eyebrow: 'Svelte 5 component · fractalsvelte-ui',
-				title: c.name,
-				subtitle: clamp(c.description, 120),
-				code: `import { ${c.name} }`
-			}
-		});
-	}
-
-	// Live machines-ui docs, likewise
-	for (const c of liveMachines) {
-		pages.push({
-			path: `/machines-ui/${c.slug}`,
-			name: `${c.displayName} (machines-ui, live)`,
-			description: c.description,
-			section: 'machines-ui live docs',
-			card: {
-				caption: 'Live docs',
-				eyebrow: 'Svelte 5 component · machines-ui',
-				title: c.displayName,
-				subtitle: clamp(c.description, 120),
-				code: `import { ${c.name} }`
-			}
-		});
 	}
 
 	return pages.map((page) => ({ ...page, card: cardText(page.card) }));

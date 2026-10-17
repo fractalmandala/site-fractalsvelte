@@ -3,16 +3,31 @@
 // them through var(--token).
 
 :root
-	--font-sans: 'Google Sans Flex', system-ui, -apple-system, 'Segoe UI', sans-serif
+	--font-sans: "Mozilla Text", sans-serif
 	--font-mono: 'Google Sans Code', ui-monospace, 'SF Mono', Menlo, monospace
+	--text-scaling: 1.25
+	--text-xs: 0.67rem
+	--text-sm: 0.75rem
+	--text-md: clamp(0.8333rem, 0.8061rem + 0.1212vw, 0.9rem)
+	--text-bs: clamp(1rem, 0.9489rem + 0.2273vw, 1rem)
+	--text-lg: clamp(1.2rem, 1.1156rem + 0.375vw, 1.4063rem)
+	--text-xl: clamp(1.44rem, 1.31rem + 0.5778vw, 1.7578rem)
+	--text-2xl: clamp(1.728rem, 1.536rem + 0.8532vw, 2.1973rem)
+	--text-3xl: clamp(2.0736rem, 1.7983rem + 1.2236vw, 2.7466rem)
+	--text-4xl: clamp(2.4883rem, 2.1018rem + 1.718vw, 3.4332rem)
+	--text-5xl: clamp(2.986rem, 2.4519rem + 2.3737vw, 4.2915rem)
+
+@media (max-width: 1024px)
+	:root
+		--app-inline: var(--space-md)
 
 [data-mode='light']
-	--bg: #FCFCFC
+	--bg: #FFFFFF
 	--bg-surface: #FFFFFF
-	--bg-panel: #FFFFFF
+	--bg-panel: #efeded
 	--bg-sunken: #F7F7F7
 	--bg-raised: #FFFFFF
-	--bg-extra: #F2F2F2
+	--bg-extra: #fdfbfb
 	--bg-input: #F7F7F7
 	--text-primary: #141414
 	--text-secondary: #6B6B6B

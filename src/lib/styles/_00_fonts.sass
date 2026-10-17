@@ -1,17 +1,77 @@
-// Self-hosted fonts, built by scripts/build-fonts.py from fonts/source/. Both are
-// variable on weight; Flex also keeps optical size for the large display type.
-// Google Sans Code is for code only (see _09_own.sass).
+@font-face
+	font-family: 'Funnel Sans'
+	src: url('/fonts/funnelsans.woff2') format('woff2')
+	font-weight: 400 700
+	font-style: normal
 
 @font-face
-	font-family: 'Google Sans Flex'
-	src: url('/fonts/google-sans-flex.woff2') format('woff2')
-	font-weight: 400 800
-	font-style: normal
-	font-display: swap
+	font-family: 'Funnel Sans'
+	src: url('/fonts/funnelsans.woff2') format('woff2')
+	font-weight: 400 700
+	font-style: italic
 
 @font-face
 	font-family: 'Google Sans Code'
 	src: url('/fonts/google-sans-code.woff2') format('woff2')
 	font-weight: 400 600
 	font-style: normal
-	font-display: swap
+
+@font-face
+	font-family: 'Overused Grotesk'
+	src: url('/fonts/ov-grot.woff2') format('woff2')
+	font-weight: 400 700
+	font-style: normal
+
+@font-face
+	font-family: 'Overused Grotesk'
+	src: url('/fonts/ov-grot.woff2') format('woff2')
+	font-weight: 400 700
+	font-style: italic
+
+@font-face
+	font-family: 'Mozilla Headline'
+	src: url('/fonts/mozillaheadline.woff2') format('woff2')
+	font-weight: 400 900
+	font-style: normal
+
+@font-face
+	font-family: 'Mozilla Text'
+	srcl: url('/fonts/mozillatext.woff2') format('woff2')
+	font-weight: 400 700
+	font-style: normal
+
+@font-face
+	font-family: 'Mozilla Text'
+	srcl: url('/fonts/mozillatext.woff2') format('woff2')
+	font-weight: 400 700
+	font-style: italic
+
+.sitedocs
+	display: flex
+	flex-direction: column
+	color: var(--text-primary)
+	blockquote
+		border-left: 4px solid var(--theme-color)
+		padding-left: 0.5rem
+		font-size: var(--text-bs)
+	p, blockquote, ul, ol
+		margin-bottom: 1.5rem
+
+ul // Unordered markdown list — square markers in the theme colour
+	list-style: square outside
+	li::marker
+		color: var(--theme-color)
+
+ol // Ordered markdown list — decimal markers in muted ink
+	list-style: decimal outside
+	li::marker
+		color: var(--theme-color)
+
+p, li, ol, ul
+	text-wrap: pretty
+
+.nav-link
+	letter-spacing: 0
+
+.page-title
+	font-family: "Mozilla Text", sans-serif

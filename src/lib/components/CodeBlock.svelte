@@ -9,8 +9,8 @@
 	}: { title: string; code: string; html: string; class?: string } = $props();
 </script>
 
-<figure class="box border radius-sm bg-sunken minw0 {className}">
-	<figcaption class="row ycenter xbetween gap-sm pl-md pr-xs py-xs bb text-sm text-muted">
+<figure class="box border radius-sm bg-raised minw0 {className}">
+	<figcaption class="row ycenter xbetween gap-sm px-sm bb text-sm text-primary bg-panel">
 		<span class="truncate">{title}</span>
 		<CopyButton text={code} label="Copy code" />
 	</figcaption>

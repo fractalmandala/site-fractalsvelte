@@ -1,12 +1,12 @@
 import { highlightSnippets } from '#lib/server/highlight.js';
 import { itemList, softwareId, type Seo } from '#lib/seo.js';
-import { packageCount, projects } from '#lib/site.js';
+import { projects } from '#lib/site.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = () => {
 	const seo: Seo = {
 		title: 'fractalsvelte — Svelte 5 components, styling & highlighting',
-		description: `${packageCount} open-source packages for Svelte 5 and SvelteKit: a 124-component UI library, ASCII graphs and diagrams, a CSS styling system and a syntax highlighter.`,
+		description: `open-source packages for Svelte 5 and SvelteKit: a 124-component UI library, ASCII graphs and diagrams, a CSS styling system and a syntax highlighter.`,
 		path: '/',
 		imageAlt: 'fractalsvelte: Svelte 5 and SvelteKit packages',
 		jsonLd: [
@@ -16,9 +16,7 @@ export const load: PageServerLoad = () => {
 			},
 			...projects.map((p) => ({
 				'@type': 'SoftwareSourceCode',
-				'@id': softwareId(`/${p.slug}`),
-				name: p.packages[0].name,
-				codeRepository: p.repo
+				'@id': softwareId(`/${p.slug}`)
 			}))
 		]
 	};
@@ -27,8 +25,7 @@ export const load: PageServerLoad = () => {
 		seo,
 		// One representative snippet per project, highlighted at build time.
 		starters: projects.map((p) => ({
-			slug: p.slug,
-			...highlightSnippets([p.quickstart.at(-1)!])[0]
+			slug: p.slug
 		}))
 	};
 };
